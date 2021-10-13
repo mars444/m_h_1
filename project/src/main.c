@@ -1,5 +1,6 @@
-#include "utils.h"
-
+#include <stdlib.h>
+#include <stdio.h>
+#include "utils.c"
 #define ERR_ARGS_COUNT (-1)
 #define ERR_WRONG_FLG (-2)
 
@@ -12,6 +13,7 @@
  * We use `atoi` function just for simplification and code reducing.
  * This function doesn't report conversation errors.
  * For safety program we recommend using `strtol` and its analogs.
+ * 
  * (See `man atoi` and `man strtol` for more info).
  *
  * const char str_num[] = "1234";
@@ -22,6 +24,8 @@
  * }
  *
  * */
+
+
 
 int main(int argc, const char** argv) {
     if (argc < 3) {
@@ -41,11 +45,11 @@ int main(int argc, const char** argv) {
         }
         case TST_FOO_IMPL: {
             if (argc == 4 ) {
-                // int base = atoi(data);
-                // int pow =  atoi(argv[3]);
-                // int res = custom_pow(base, pow);    // TODO: Implement me
+                 int base = atoi(data);
+                int pow =  atoi(argv[3]);
+                int res = custom_pow(base, pow);    // TODO:(@mars444);
 
-                // printf("%i\n", res);
+                 printf("%i\n", res);
             } else {
                 return ERR_ARGS_COUNT;
             }
@@ -58,6 +62,7 @@ int main(int argc, const char** argv) {
             // a separate C-module (not in `main` or `utils` module)
         }
         default: {
+            printf("Hello World");
             return ERR_WRONG_FLG;
         }
     }
