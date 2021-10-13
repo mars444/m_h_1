@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <math.h>
 
 size_t timer_from(int from) {
     size_t counter = 0;

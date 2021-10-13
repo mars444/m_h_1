@@ -1,8 +1,8 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include "utils.c"
-#include "case_3.c"
-#include "case_4.c"
+#include </home/mars444/Рабочий стол/mi/mail-homework/project/include/utils.h>
+#include </home/mars444/Рабочий стол/mi/mail-homework/project/include/case_3.h>
+#include </home/mars444/Рабочий стол/mi/mail-homework/project/include/case_4.h>
 #define ERR_ARGS_COUNT (-1)
 #define ERR_WRONG_FLG (-2)
 #define TST_FOO_FIX     1
