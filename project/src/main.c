@@ -8,25 +8,7 @@
 #define TST_FOO_FIX     1
 #define TST_FOO_IMPL    2
 #define TST_MOD_IMPL    3
-
-
-/* NOTE(stitaevskiy):
- * We use `atoi` function just for simplification and code reducing.
- * This function doesn't report conversation errors.
- * For safety program we recommend using `strtol` and its analogs.
- * 
- * (See `man atoi` and `man strtol` for more info).
- *
- * const char str_num[] = "1234";
- * char* end = NULL;
- * int val = (int) strtol(str_num, &end, 0);
- * if (end != '\0') {
- *     //ERROR
- * }
- *
- * */
-
-
+#define TST_MOD_4       4
 
 int main(int argc, const char** argv) {
     if (argc < 3) {
@@ -49,8 +31,7 @@ int main(int argc, const char** argv) {
                  int base = atoi(data);
                 int pow =  atoi(argv[3]);
                 int res = custom_pow(base, pow);   // TODO(@mars444):
-
-                 printf("%i\n", res);
+                printf("%i\n", res);
             } else {
                 return ERR_ARGS_COUNT;
             }
@@ -62,8 +43,13 @@ int main(int argc, const char** argv) {
              printf("%d\n", result);
              break;
         }
+        case TST_MOD_4: {
+            int num = atoi(data);    // TODO(@mars444):
+            int result = numbers_before_n(num);
+             printf("%d\n", result);
+             break;
+        }
         default: {
-            printf("Hello World");
             return ERR_WRONG_FLG;
         }
     }

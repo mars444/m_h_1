@@ -1,6 +1,6 @@
 #ifndef MAIL_HOMEWORK_PROJECT_INCLUDE_CASE_3_H_
 #define MAIL_HOMEWORK_PROJECT_INCLUDE_CASE_3_H_
 
-int custom_pow(int base, int power);
+int custom_pow(int bases, int power);
 
 #endif   // MAIL_HOMEWORK_PROJECT_INCLUDE_CASE_3_H_
