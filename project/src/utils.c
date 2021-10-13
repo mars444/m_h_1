@@ -2,9 +2,14 @@
 
 size_t timer_from(int from) {
     size_t counter = 0;
-    for (int i = from; i > 0; --i) {
+    for (int i = from; i >=0; i--) {
         ++counter;
-        printf("%d", i);
+        if (i != 0) {
+        printf("%d ", i);
+        } else {
+             printf("%d", i);
+             printf("\n");
+        }
     }
     return counter;
 }
@@ -12,11 +17,10 @@ size_t timer_from(int from) {
 
 
 // TODO(@mars444):
-
 // функция возводит в степень
 int custom_pow(int base, int power) {
     int current = 1;
-    for ( int i = 1; i < power; i++ ) {
+    for ( int i = 1; i <= power; i++ ) {
         current *= base;
     }
     return current;
