@@ -44,22 +44,21 @@ int main(int argc, const char** argv) {
             break;
         }
         case TST_FOO_IMPL: {
-            if (argc == 4 ) {
+            if (argc == 4) {
                  int base = atoi(data);
                 int pow =  atoi(argv[3]);
-                int res = custom_pow(base, pow);    // TODO:(@mars444);
+                int res = custom_pow(base, pow);   // TODO(@mars444):
 
                  printf("%i\n", res);
             } else {
                 return ERR_ARGS_COUNT;
             }
+            break;
         }
         case TST_MOD_IMPL: {
-            // int num = atoi(data);
-
-            // TODO: Print to stdout `1` if `num` is prime number and `0` otherwise
-            // This function MUST be implemented in
-            // a separate C-module (not in `main` or `utils` module)
+            int num = atoi(data);    // TODO(@mars444):
+          isPrime(num);
+          break;
         }
         default: {
             printf("Hello World");

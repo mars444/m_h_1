@@ -1,12 +1,10 @@
-#include <stdio.h>
+#ifndef MAIL_HOMEWORK_PROJECT_INCLUDE_UTILS_H_
+#define MAIL_HOMEWORK_PROJECT_INCLUDE_UTILS_H_
 #include <stddef.h>
-#ifndef UTILS_H
-#define UTILS_H
 
 
 size_t timer_from(unsigned char from);
-// TODO: Implement `power of` function
+// TODO(@mars444): Stuff.
 // int custom_pow(int base, int power);
 
-#endif //UTILS_H
-
+#endif   // MAIL_HOMEWORK_PROJECT_INCLUDE_UTILS_H_
