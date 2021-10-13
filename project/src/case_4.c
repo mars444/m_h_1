@@ -1,9 +1,14 @@
 #include <stdio.h>
-void numbers_before_n(int n) {
-    if ( n > 0 ) {
-numbers_before_n(n-1);
-printf("%d ", n);
-    } else if ( n == 0 ) {
-printf("%d", n);
+int numbers_before_n(int n, int m) {
+    if ( n > 1 ) {
+    numbers_before_n(n - 1, m);
+    } else if ( n < 1 ) {
+        numbers_before_n(n + 1, m);
     }
+    if (n != m) {
+        printf("%d ", n);
+    } else {
+    printf("%d", n);
+    }
+    return 0;
 }

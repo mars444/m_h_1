@@ -45,8 +45,9 @@ int main(int argc, const char** argv) {
              break;
         }
         case TST_MOD_4: {
-            int num = atoi(data);    // TODO(@mars444):
-            numbers_before_n(num);
+        int num = atoi(data);
+        int num2 = num;  // TODO(@mars444):
+            numbers_before_n(num, num2);
              break;
         }
         default: {

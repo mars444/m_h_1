@@ -1,4 +1,4 @@
 #ifndef MAIL_HOMEWORK_PROJECT_INCLUDE_CASE_4_H_
 #define MAIL_HOMEWORK_PROJECT_INCLUDE_CASE_4_H_
-void numbers_before_n(int n);
+int numbers_before_n(int n, int m);
 #endif   // MAIL_HOMEWORK_PROJECT_INCLUDE_CASE_4_H_
