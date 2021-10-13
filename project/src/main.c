@@ -3,7 +3,6 @@
 #include "utils.c"
 #define ERR_ARGS_COUNT (-1)
 #define ERR_WRONG_FLG (-2)
-
 #define TST_FOO_FIX     1
 #define TST_FOO_IMPL    2
 #define TST_MOD_IMPL    3
@@ -57,8 +56,9 @@ int main(int argc, const char** argv) {
         }
         case TST_MOD_IMPL: {
             int num = atoi(data);    // TODO(@mars444):
-          isPrime(num);
-          break;
+            int result = isPrime(num);
+             printf("%d\n", result);
+             break;
         }
         default: {
             printf("Hello World");

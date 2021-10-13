@@ -1,4 +1,3 @@
-#include <stddef.h>
 #include <stdio.h>
 #include <math.h>
 
@@ -13,13 +12,7 @@ size_t timer_from(int from) {
 
 
 
-// TODO(@mars444): Stuff.
-
-// функция возводит в степень
-int custom_pow(int base, int power) {
-    return pow(base, power);
-}
-
+// TODO(@mars444):
 // функция проверяет - простое ли число n
 int isPrime(int n) {
     // если n > 1
