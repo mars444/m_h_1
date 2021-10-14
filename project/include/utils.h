@@ -1,5 +1,5 @@
-#ifndef MAIL_HOMEWORK_PROJECT_INCLUDE_UTILS_H_
-#define MAIL_HOMEWORK_PROJECT_INCLUDE_UTILS_H_
+#ifndef PROJECT_INCLUDE_UTILS_H_
+#define PROJECT_INCLUDE_UTILS_H_
 #include <stddef.h>
 
 
@@ -8,4 +8,4 @@ size_t timer_from(int from);
 
 int custom_pow(int base, int power);
 
-#endif   // MAIL_HOMEWORK_PROJECT_INCLUDE_UTILS_H_
+#endif   // PROJECT_INCLUDE_UTILS_H_
