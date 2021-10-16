@@ -3,4 +3,4 @@
 
 int numbers_before_n(int n, int m);
 
-#endif   // PROJECT_INCLUDE_OUTPUT_NUMBERS_F
+#endif   // PROJECT_INCLUDE_OUTPUT_NUMBERS_FROM_1_TO_N_H_
