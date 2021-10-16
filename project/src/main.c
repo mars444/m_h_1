@@ -4,8 +4,8 @@
 #include <../include/output_numbers_from_1_to_n.h>
 #include <../include/utils.h>
 
-#define ERR_ARGS_COUNT (-1)
-#define ERR_WRONG_FLG (-2)
+#define ERROR_ARGUMENTS_COUNT            -1
+#define ERROR_WRONG_CASE_NUMBER          -2
 #define TEST_TIMER                        1
 #define TEST_RISE_TO_THE_POWER            2
 #define TEST_CHECK_PRIME_NUMBER           3
