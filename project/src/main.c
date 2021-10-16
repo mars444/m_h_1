@@ -16,21 +16,21 @@ int main(int argc, const char** argv) {
         return ERROR_ARGUMENTS_COUNT;
     }
 
-    int Test_case = stoi(argv[1]);
+    int Test_case = strtol(argv[1], 0, 10);
     const char* data;
     data = argv[2];
 
     switch (Test_case) {
         case TEST_TIMER: {
-            int to = stoi(data);
+            int to = strtol(data, 0, 10);
             size_t ticks_count = timer_from(to);
             printf("%zu\n", ticks_count);
             break;
         }
         case TEST_RISE_TO_THE_POWER: {
             if (argc == 4) {
-                int base = stoi(data);
-                int pow =  stoi(argv[3]);
+                int base = strtol(data, 0, 10);
+                int pow =  strtol(argv[3], 0, 10);
                 int res = custom_pow(base, pow);
                 printf("%d\n", res);
             } else {
@@ -39,13 +39,13 @@ int main(int argc, const char** argv) {
             break;
         }
         case TEST_CHECK_PRIME_NUMBER: {
-            int num = stoi(data);
+            int num = strtol(data, 0, 10);
             int result = is_prime_number(num);
             printf("%d\n", result);
             break;
         }
         case TEST_NUMBER_FROM_1_TO_N: {
-            int num = stoi(data);
+            int num = strtol(data, 0, 10);
             int num2 = num;
             numbers_before_n(num, num2);
             break;
