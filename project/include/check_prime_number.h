@@ -1,0 +1,6 @@
+#ifndef  PROJECT_INCLUDE_CHECK_PRIME_NUMBER_H_
+#define  PROJECT_INCLUDE_CHECK_PRIME_NUMBER_H_
+
+int is_prime_number(int n);
+
+#endif   //  PROJECT_INCLUDE_CHECK_PRIME_NUMBER_H_

@@ -1,8 +1,8 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <../include/check_prime_number.h>
+#include <../include/output_numbers_from_1_to_n.h>
 #include <../include/utils.h>
-#include <../include/case_3.h>
-#include <../include/case_4.h>
 
 #define ERR_ARGS_COUNT (-1)
 #define ERR_WRONG_FLG (-2)
@@ -40,7 +40,7 @@ int main(int argc, const char** argv) {
         }
         case TST_MOD_IMPL: {
             int num = atoi(data);    // TODO(@mars444):
-            int result = isPrime(num);
+            int result = is_prime_number(num);
              printf("%d\n", result);
              break;
         }

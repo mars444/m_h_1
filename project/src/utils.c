@@ -16,7 +16,6 @@ size_t timer_from(int from) {
 
 
 
-// TODO(@mars444):
 // функция возводит в степень
 int custom_pow(int base, int power) {
     if ( base == 1 ) {
