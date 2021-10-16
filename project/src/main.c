@@ -13,45 +13,45 @@
 
 int main(int argc, const char** argv) {
     if (argc < 3) {
-        return ERR_ARGS_COUNT;
+        return ERROR_ARGUMENTS_COUNT;
     }
 
-    int Test_case = atoi(argv[1]);
+    int Test_case = stoi(argv[1]);
     const char* data;
     data = argv[2];
 
     switch (Test_case) {
         case TEST_TIMER: {
-            int to = atoi(data);
+            int to = stoi(data);
             size_t ticks_count = timer_from(to);
             printf("%zu\n", ticks_count);
             break;
         }
         case TEST_RISE_TO_THE_POWER: {
             if (argc == 4) {
-                int base = atoi(data);
-                int pow =  atoi(argv[3]);
+                int base = stoi(data);
+                int pow =  stoi(argv[3]);
                 int res = custom_pow(base, pow);
                 printf("%d\n", res);
             } else {
-                return ERR_ARGS_COUNT;
+                return ERROR_ARGUMENTS_COUNT;
             }
             break;
         }
         case TEST_CHECK_PRIME_NUMBER: {
-            int num = atoi(data);
+            int num = stoi(data);
             int result = is_prime_number(num);
             printf("%d\n", result);
             break;
         }
         case TEST_NUMBER_FROM_1_TO_N: {
-            int num = atoi(data);
+            int num = stoi(data);
             int num2 = num;
             numbers_before_n(num, num2);
             break;
         }
         default: {
-            return ERR_WRONG_FLG;
+            return ERROR_WRONG_CASE_NUMBER;
         }
     }
 }
