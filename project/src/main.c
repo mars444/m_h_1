@@ -29,9 +29,9 @@ int main(int argc, const char** argv) {
         }
         case TST_FOO_IMPL: {
             if (argc == 4) {
-                 int base = atoi(data);
+                int base = atoi(data);
                 int pow =  atoi(argv[3]);
-                int res = custom_pow(base, pow);   // TODO(@mars444):
+                int res = custom_pow(base, pow);   
                 printf("%d\n", res);
             } else {
                 return ERR_ARGS_COUNT;
@@ -39,16 +39,16 @@ int main(int argc, const char** argv) {
             break;
         }
         case TST_MOD_IMPL: {
-            int num = atoi(data);    // TODO(@mars444):
+            int num = atoi(data);   
             int result = is_prime_number(num);
-             printf("%d\n", result);
-             break;
+            printf("%d\n", result);
+            break;
         }
         case TST_MOD_4: {
-        int num = atoi(data);
-        int num2 = num;  // TODO(@mars444):
+            int num = atoi(data);
+            int num2 = num;  
             numbers_before_n(num, num2);
-             break;
+            break;
         }
         default: {
             return ERR_WRONG_FLG;
