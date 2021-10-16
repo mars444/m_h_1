@@ -6,10 +6,10 @@
 
 #define ERR_ARGS_COUNT (-1)
 #define ERR_WRONG_FLG (-2)
-#define TST_FOO_FIX     1
-#define TST_FOO_IMPL    2
-#define TST_MOD_IMPL    3
-#define TST_MOD_4       4
+#define TEST_TIMER                        1
+#define TEST_RISE_TO_THE_POWER            2
+#define TEST_CHECK_PRIME_NUMBER           3
+#define TEST_NUMBER_FROM_1_TO_N           4
 
 int main(int argc, const char** argv) {
     if (argc < 3) {
@@ -21,32 +21,32 @@ int main(int argc, const char** argv) {
     data = argv[2];
 
     switch (Test_case) {
-        case TST_FOO_FIX: {
+        case TEST_TIMER: {
             int to = atoi(data);
             size_t ticks_count = timer_from(to);
             printf("%zu\n", ticks_count);
             break;
         }
-        case TST_FOO_IMPL: {
+        case TEST_RISE_TO_THE_POWER: {
             if (argc == 4) {
                 int base = atoi(data);
                 int pow =  atoi(argv[3]);
-                int res = custom_pow(base, pow);   
+                int res = custom_pow(base, pow);
                 printf("%d\n", res);
             } else {
                 return ERR_ARGS_COUNT;
             }
             break;
         }
-        case TST_MOD_IMPL: {
-            int num = atoi(data);   
+        case TEST_CHECK_PRIME_NUMBER: {
+            int num = atoi(data);
             int result = is_prime_number(num);
             printf("%d\n", result);
             break;
         }
-        case TST_MOD_4: {
+        case TEST_NUMBER_FROM_1_TO_N: {
             int num = atoi(data);
-            int num2 = num;  
+            int num2 = num;
             numbers_before_n(num, num2);
             break;
         }
