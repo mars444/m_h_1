@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <stddef.h>
+#include <stdlib.h>
 struct masterRecord { int Number;
 					 char Name[20];
 					 char Surname[20];
@@ -42,10 +44,10 @@ int main(void){
 					Ptr_2 = fopen("transaction.dat", "r");
 					blackrecord = fopen("blackrecord.dat", "w");
 					#include"utils.h"
-				if ( Ptr == NULL || Ptr_2 == NULL || blackRecord == NULL ) {
-					puts("exit");
-				} else {
-						blackRecord( Ptr, Ptr_2 , blackrecord , client_data , transfer);
+					if ( Ptr == NULL || Ptr_2 == NULL ) {
+						puts("exit");
+					} else {
+						blackRecord(Ptr, Ptr_2 , blackrecord , client_data , transfer);
 						free(Ptr);
 						fclose(Ptr);
 						fclose(Ptr_2);
@@ -79,7 +81,7 @@ void masterWrite(FILE *ofPTR , Data Client) {
 				   &Client.indebtedness,
 				   &Client.credit_limit,
 				   &Client.cash_payments) != -1) {
-		fprintf(ofPTR, "%-12d%-11s%-11s%-16s%20s%12.2f%12.2f%12.2f\n",
+		fprintf(ofPTR, "%-12d%-11s%-11s%-16s%20f%12.2f%12.2f\n",
 	            		Client.Number,
 				   		Client.Surname,
 				 		Client.addres,
@@ -108,7 +110,7 @@ void transactionWrite(FILE *ofPtr, Data transfer) {
 			printf("%s\n%s\n",
 					"1 Number account:",
 					"2 Client cash payments: ");
-		} 
+		}
 }
 void blackRecord(FILE *ofPTR, FILE *ofPTR_2 , FILE *blackrecord , Data	 client_data , Data transfer) {
 	while ( fscanf(ofPTR , "%d%s%s%s%s%lf%lf%lf",
