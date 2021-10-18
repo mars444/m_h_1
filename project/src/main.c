@@ -47,7 +47,7 @@ int main(int argc, const char** argv) {
         case TEST_NUMBER_FROM_1_TO_N: {
             int num = strtol(data, 0, 10);
             int num2 = num;
-            numbers_before_n(num, num2);
+            num_1_to_n(num, num2);
             break;
         }
         default: {
