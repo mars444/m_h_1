@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <../include/check_prime_number.h>
-#include <../include/output_numbers_from_1_to_n.h>
+#include <../include/num_1_to_n.h>
 #include <../include/utils.h>
 
 #define ERROR_ARGUMENTS_COUNT            -1
