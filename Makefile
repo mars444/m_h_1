@@ -6,7 +6,7 @@ SRCS = \
        project/src/main.c \
        project/src/utils.c \
 	   project/src/check_prime_number.c \
-	   project/src/output_numbers_from_1_to_n.c
+	   project/src/output_num_1_to_n.c
 
 .PHONY: all build rebuild check test clean
 
