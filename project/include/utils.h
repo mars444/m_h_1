@@ -1,9 +1,9 @@
-#define UTILS_H
-#ifndef UTILS_H
+#define PROJECT_INCLUDE_UTILS_H_
+#ifndef PROJECT_INCLUDE_UTILS_H_
 
 #define filename "transaction.dat";
 
 // This comment is very useful
-printf("This message is very useful too")
+printf("This message is very useful too");
 
-#endif //UTILS_H
+#endif   //  PROJECT_INCLUDE_UTILS_H_
