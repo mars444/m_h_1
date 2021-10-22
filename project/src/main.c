@@ -30,12 +30,12 @@ int main(void)
 			else
 			{
 				masterWrite(Ptr, client_data);
-				free(Ptr);	 //else выполняем фунцию  masterWrit
+			 //else выполняем фунцию  masterWrit
 				fclose(Ptr); // close
 			}
 			break;
 		case 2:
-			Ptr = fopen("record.dat", "r+");
+			Ptr = fopen("transaction.dat", "r+");
 			// r+  Открывает файл для чтения/записи
 			if (Ptr == NULL)
 			{
@@ -44,7 +44,7 @@ int main(void)
 			else
 			{
 				transactionWrite(Ptr, transfer);
-				free(Ptr);	 //else выполняем фунцию  transactionWrite
+					 //else выполняем фунцию  transactionWrite
 				fclose(Ptr); // close
 			}
 			break;
@@ -59,9 +59,7 @@ int main(void)
 			else
 			{
 				blackRecord(Ptr, Ptr_2, blackrecord, client_data, transfer);
-				free(Ptr);
-				free(Ptr_2);
-				free(blackrecord); //Функция free() возвращает память, на которую указывает параметр ptr, назад в кучу. В резуль­тате эта память может выделяться снова.
+				//Функция free() возвращает память, на которую указывает параметр ptr, назад в кучу. В резуль­тате эта память может выделяться снова.
 				fclose(Ptr);	   // fopen(). Она сохраняет в файл данные, находящиеся в дисковом буфере, и выполняет операцию системного уровня по закрытию файла
 				fclose(Ptr_2);
 				fclose(blackrecord);
@@ -155,7 +153,7 @@ void blackRecord(FILE *ofPTR, FILE *ofPTR_2, FILE *blackrecord, Data client_data
 				client_data.credit_limit += transfer.cash_payments;
 			}
 		}
-		fprintf(blackrecord, "%-12d%-11s%-11s%-16s%20s%12.2f%12.2f%12.2f\n",
+		fprintf(blackrecord, "%-12d%-11s%-11s%-11s%-16s%20f%12.2f%12.2f\n",
 				client_data.Number,
 				client_data.Name,
 				client_data.Surname,
