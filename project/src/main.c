@@ -1,28 +1,10 @@
 #include <stdio.h>
 #include <stddef.h>
 #include <stdlib.h>
+#include "main.h"
 
 
 // потоки фсканф фпринтф дефайны тайпдефы хедеры
-
-struct masterRecord { int Number;
-                      char Name[20];
-                      char Surname[20];
-                      char addres[30];
-                      char TelNumber[15];
-                      double indebtedness;
-                      double credit_limit;
-                      double cash_payments;};
-typedef struct masterRecord Data;
-
-
-
-void masterWrite(FILE *ofPTR, Data Client);
-void transactionWrite(FILE *ofPTR2, Data transfer);
-void blackRecord(FILE *ofPTR, FILE *ofPTR_2, FILE *blackrecord, Data client_data, Data transfer);
-
-    Data client_data;
-    Data transfer;
 
 
 int main(void) {
@@ -154,6 +136,5 @@ void blackRecord(FILE *ofPTR, FILE *ofPTR_2, FILE *blackrecord, Data client_data
                 client_data.indebtedness,
                 client_data.credit_limit,
                 client_data.cash_payments);
-        rewind(ofPTR_2);
     }
 }
