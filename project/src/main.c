@@ -5,14 +5,34 @@
 
 // потоки фсканф фпринтф дефайны тайпдефы хедеры
 
+struct masterRecord { int Number;
+					  char Name[20];
+					  char Surname[20];
+					  char addres[30];
+					  char TelNumber[15];
+					  double indebtedness;
+					  double credit_limit;
+					  double cash_payments;
+					};
+typedef struct masterRecord Data; 
+
+
+
+void masterWrite(FILE *ofPTR, Data Client);
+void transactionWrite(FILE *ofPTR2, Data transfer);
+void blackRecord(FILE *ofPTR, FILE *ofPTR_2, FILE *blackrecord, Data client_data, Data transfer);
+
+	Data client_data;
+	Data transfer;
+
+
 int main(void)
 {
 	int choice = 0;
 
 	FILE *Ptr, *Ptr_2, *blackrecord; //задефйнен FILE в библиотеке для работы с файлами
 
-	Data client_data;
-	Data transfer;
+
 
 	printf("%s", "please enter action\n1 enter data client:\n2 enter data transaction:\n3 update base\n");
 
@@ -86,7 +106,7 @@ void masterWrite(FILE *ofPTR, Data Client)
 		   "6 Client indebtedness: ",
 		   "7 Client credit limit: ",
 		   "8 Client cash payments: ");
-	while (scanf("%d%s%s%s%s%lf%lf%lf",
+	while (scanf("%1000d%20s%20s%30s%15s%1000000lf%1000000lf%1000000lf",
 				 &Client.Number,
 				 Client.Name,
 				 Client.Surname,
@@ -94,7 +114,7 @@ void masterWrite(FILE *ofPTR, Data Client)
 				 Client.TelNumber,
 				 &Client.indebtedness,
 				 &Client.credit_limit,
-				 &Client.cash_payments) != -1)
+				 &Client.cash_payments) != 8)
 	{
 		fprintf(ofPTR, "%-12d%-11s%-11s%-11s%-16s%20f%12.2f%12.2f\n", // 12 11 выведет максимум
 				Client.Number,
@@ -136,7 +156,7 @@ void transactionWrite(FILE *ofPTR2, Data transfer)
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void blackRecord(FILE *ofPTR, FILE *ofPTR_2, FILE *blackrecord, Data client_data, Data transfer)
 {
-	while (fscanf(ofPTR, "%d%s%s%s%s%lf%lf%lf", //  Функция fscanf() считывает информацию из потока,
+	while (fscanf(ofPTR, "%1000d%20s%20s%30s%15s%1000000lf%1000000lf%1000000lf", //  Функция fscanf() считывает информацию из потока,
 				  &client_data.Number,
 				  client_data.Name,
 				  client_data.Surname,
