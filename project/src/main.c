@@ -5,8 +5,8 @@
 
 
 // потоки фсканф фпринтф дефайны тайпдефы хедеры
-
-
+int a = 0;
+int b = 0;
 int main(void) {
     int choice = 0;
 
@@ -24,8 +24,7 @@ int main(void) {
             }
             break;
         case 2:
-            Ptr = fopen("transaction.dat", "r+");
-            // r+  Открывает файл для чтения/записи
+            Ptr = fopen("transaction.dat", "r+");  // r+  Открывает файл для чтения/записи
             if ( Ptr == NULL ) {
                 puts("Not acess");
             } else {
@@ -55,6 +54,42 @@ int main(void) {
     return 0;
 }
 
+
+
+int write_about_client_to_file(FILE *ofPTR, Data Client) {
+    if ( scanf("%d%20s%20s%30s%15s%lf%lf%lf",
+                 &Client.Number,
+                 Client.Name,
+                 Client.Surname,
+                 Client.addres,
+                 Client.TelNumber,
+                 &Client.indebtedness,
+                 &Client.credit_limit,
+                 &Client.cash_payments) != -1 ) {
+fprintf(ofPTR, "%-12d%-11s%-11s%-16s%20s%12.2f%12.2f%12.2f\n",    // 12 11 выведет максимум
+                Client.Number,
+                Client.Name,
+                Client.Surname,
+                Client.addres,
+                Client.TelNumber,
+                Client.indebtedness,
+                Client.credit_limit,
+                Client.cash_payments);} else {
+                    a = -1;
+                }
+                return 0;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////
+int write_transaction_to_file(FILE *ofPTR2, Data transfer) {
+    if ( scanf("%d %lf", &transfer.Number, &transfer.cash_payments) != -1 ) {
+    fprintf(ofPTR2, "%-3d%-6.2f\n", transfer.Number, transfer.cash_payments);} else {
+                    b = -1;
+                }
+                return 0;
+}
+
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void masterWrite(FILE *ofPTR, Data Client) {
     printf("%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n\n",
@@ -66,25 +101,10 @@ void masterWrite(FILE *ofPTR, Data Client) {
            "6 Client indebtedness: ",
            "7 Client credit limit: ",
            "8 Client cash payments: ");
-    while ( scanf("%d%20s%20s%30s%15s%lf%lf%lf",
-                 &Client.Number,
-                 Client.Name,
-                 Client.Surname,
-                 Client.addres,
-                 Client.TelNumber,
-                 &Client.indebtedness,
-                 &Client.credit_limit,
-                 &Client.cash_payments) != -1 ) {
-        fprintf(ofPTR, "%-12d%-11s%-11s%-16s%20s%12.2f%12.2f%12.2f\n",    // 12 11 выведет максимум
-                Client.Number,
-                Client.Name,
-                Client.Surname,
-                Client.addres,
-                Client.TelNumber,
-                Client.indebtedness,
-                Client.credit_limit,
-                Client.cash_payments);
-        printf("%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n\n",
+
+    while ( a != -1 ) {
+  write_about_client_to_file(ofPTR, Client);
+  printf("%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n\n",
                "1 Number account: ",
                "2 Client name: ",
                "3 Surname: ",
@@ -94,7 +114,8 @@ void masterWrite(FILE *ofPTR, Data Client) {
                "7 Client credit limit: ",
                "9 Client cash payments:");
     }
-}
+    }
+
 // fscanf fprintf  что такое поток   valgrind.
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -102,13 +123,18 @@ void transactionWrite(FILE *ofPTR2, Data transfer) {
     printf("%s\n%s\n",
            "1 Number account: ",
            "2 Client cash payments: ");
-    while ( scanf("%d %lf", &transfer.Number, &transfer.cash_payments) != -1 ) {
-        fprintf(ofPTR2, "%-3d%-6.2f\n", transfer.Number, transfer.cash_payments);
+    while ( b != -1 ) {
+    write_transaction_to_file(ofPTR2, transfer);
         printf("%s  %d\n%s  %lf\n",
                "1 Number account:", transfer.Number,
                "2 Client cash payments: ", transfer.cash_payments);
     }
 }
+
+///////////////////////////////////////////////////////////////////////////
+
+
+
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void blackRecord(FILE *ofPTR, FILE *ofPTR_2, FILE *blackrecord, Data client_data, Data transfer) {

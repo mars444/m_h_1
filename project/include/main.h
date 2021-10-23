@@ -1,8 +1,7 @@
 #ifndef  PROJECT_INCLUDE_MAIN_H_
-#include <stdio.h>
 #define  PROJECT_INCLUDE_MAIN_H_
 
-
+#include <stdio.h>
 
 struct masterRecord { int Number;
                       char Name[20];
@@ -14,8 +13,8 @@ struct masterRecord { int Number;
                       double cash_payments;};
 typedef struct masterRecord Data;
 
-
-
+int write_about_client_to_file(FILE *ofPTR, Data Client);
+int write_transaction_to_file(FILE *ofPTR2, Data transfer);
 void masterWrite(FILE *ofPTR, Data Client);
 void transactionWrite(FILE *ofPTR2, Data transfer);
 void blackRecord(FILE *ofPTR, FILE *ofPTR_2, FILE *blackrecord, Data client_data, Data transfer);
