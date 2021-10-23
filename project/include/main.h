@@ -22,6 +22,7 @@ void blackRecord(FILE *ofPTR, FILE *ofPTR_2, FILE *blackrecord, Data client_data
 
     Data client_data;
     Data transfer;
+    FILE *Ptr, *Ptr_2, *blackrecord;
 
 
 #endif   //  PROJECT_INCLUDE_MAIN_H_

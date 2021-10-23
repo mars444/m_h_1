@@ -10,8 +10,6 @@
 int main(void) {
     int choice = 0;
 
-    FILE *Ptr, *Ptr_2, *blackrecord;   //   задефйнен FILE в библиотеке для работы с файлами
-
     printf("%s", "please enter action\n1 enter data client:\n2 enter data transaction:\n3 update base\n");
 
     while ( scanf("%d", &choice) != -1 ) {
@@ -43,7 +41,8 @@ int main(void) {
                 puts("exit");
             } else {
                 blackRecord(Ptr, Ptr_2, blackrecord, client_data, transfer);
-                fclose(Ptr);  // fopen(). Она сохраняет в файл данные, находящиеся в дисковом буфере
+                fclose(Ptr);
+                fclose(Ptr_2);   // fopen(). Она сохраняет в файл данные, находящиеся в дисковом буфере
                 fclose(blackrecord);
             }
             break;
@@ -67,7 +66,7 @@ void masterWrite(FILE *ofPTR, Data Client) {
            "6 Client indebtedness: ",
            "7 Client credit limit: ",
            "8 Client cash payments: ");
-    while ( scanf("%1000d%20s%20s%30s%15s%1000000lf%1000000lf%1000000lf",
+    while ( scanf("%d%20s%20s%30s%15s%lf%lf%lf",
                  &Client.Number,
                  Client.Name,
                  Client.Surname,
@@ -76,7 +75,7 @@ void masterWrite(FILE *ofPTR, Data Client) {
                  &Client.indebtedness,
                  &Client.credit_limit,
                  &Client.cash_payments) != -1 ) {
-        fprintf(ofPTR, "%-12d%-11s%-11s%-11s%-16s%20f%12.2f%12.2f\n",    // 12 11 выведет максимум
+        fprintf(ofPTR, "%-12d%-11s%-11s%-16s%20s%12.2f%12.2f%12.2f\n",    // 12 11 выведет максимум
                 Client.Number,
                 Client.Name,
                 Client.Surname,
@@ -113,7 +112,7 @@ void transactionWrite(FILE *ofPTR2, Data transfer) {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void blackRecord(FILE *ofPTR, FILE *ofPTR_2, FILE *blackrecord, Data client_data, Data transfer) {
-    while ( fscanf(ofPTR, "%1000d%20s%20s%30s%15s%1000000lf%1000000lf%1000000lf",
+    while ( fscanf(ofPTR, "%d%20s%20s%30s%15s%lf%lf%lf",
                   &client_data.Number,
                   client_data.Name,
                   client_data.Surname,
@@ -127,7 +126,7 @@ void blackRecord(FILE *ofPTR, FILE *ofPTR_2, FILE *blackrecord, Data client_data
                 client_data.credit_limit += transfer.cash_payments;
             }
         }
-        fprintf(blackrecord, "%-12d%-11s%-11s%-11s%-16s%20f%12.2f%12.2f\n",
+        fprintf(blackrecord, "%-12d%-11s%-11s%-16s%20s%12.2f%12.2f%12.2f\n",
                 client_data.Number,
                 client_data.Name,
                 client_data.Surname,
@@ -136,5 +135,6 @@ void blackRecord(FILE *ofPTR, FILE *ofPTR_2, FILE *blackrecord, Data client_data
                 client_data.indebtedness,
                 client_data.credit_limit,
                 client_data.cash_payments);
+        rewind(ofPTR_2);
     }
 }
