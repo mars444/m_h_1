@@ -3,7 +3,8 @@ HDRS_DIR = project/include
 
 SRCS = project/src/main.c \
        project/src/write_client_to_file.c \
-	   project/src/write_to_file_test.c 
+	   project/src/write_to_file_test.c \
+	   project/src/write_transaction.c
 
 .PHONY: all build rebuild check test memtest clean
 

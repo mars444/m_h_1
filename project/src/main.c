@@ -3,10 +3,11 @@
 #include <stdlib.h>
 #include "main.h"
 #include "write_client_to_file.h"
+#include "write_transaction.h"
+#include "write_to_file_test.h"
 
 
 // потоки фсканф фпринтф дефайны тайпдефы хедеры
-int b = 0;
 int main(void) {
     int choice = 0;
 
@@ -71,40 +72,6 @@ Data my_data = {
     return 0;
 }
 
-
-
-
-
-
-// fscanf fprintf  что такое поток   valgrind.
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-int write_transaction_to_file(FILE *ofPTR2, Data transfer) {
-    if ( scanf("%d %lf", &transfer.Number, &transfer.cash_payments) != -1 ) {
-    fprintf(ofPTR2, "%-3d%-6.2f\n", transfer.Number, transfer.cash_payments);} else {
-                    b = -1;
-                }
-                return 0;
-}
-void transactionWrite(FILE *ofPTR2, Data transfer) {
-    printf("%s\n%s\n",
-           "1 Number account: ",
-           "2 Client cash payments: ");
-    while ( b != -1 ) {
-    write_transaction_to_file(ofPTR2, transfer);
-        printf("%s  %d\n%s  %lf\n",
-               "1 Number account:", transfer.Number,
-               "2 Client cash payments: ", transfer.cash_payments);
-    }
-}
-
-///////////////////////////////////////////////////////////////////////////
-
-
-
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void blackRecord(FILE *ofPTR, FILE *ofPTR_2, FILE *blackrecord, Data client_data, Data transfer) {
     while ( fscanf(ofPTR, "%d%20s%20s%30s%15s%lf%lf%lf",
                   &client_data.Number,

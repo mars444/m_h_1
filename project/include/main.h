@@ -14,8 +14,8 @@ struct masterRecord { int Number;
 typedef struct masterRecord Data;
 
 
-int write_transaction_to_file(FILE *ofPTR2, Data transfer);
-void transactionWrite(FILE *ofPTR2, Data transfer);
+
+
 void blackRecord(FILE *ofPTR, FILE *ofPTR_2, FILE *blackrecord, Data client_data, Data transfer);
 int write_to_file(FILE *filename, Data Client);
 
