@@ -68,14 +68,14 @@ int main(void) {
 
 
 Data my_data = {
-    .Number = 12,
+    .Number = 444,
     .Name = "Petr",
     .Surname = "Pamuzhak",
     .addres = "Podolsk",
     .TelNumber = "+79251415930",
-    .indebtedness = 123,
-    .credit_limit = 124512,
-    .cash_payments = 12525};
+    .indebtedness = 1000,
+    .credit_limit = 9999999,
+    .cash_payments = 55555};
 
     test = fopen("my_test.dat", "w");   // w  Открывает файл для записи
     write_to_file(test, my_data);
