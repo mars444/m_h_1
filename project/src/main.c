@@ -9,6 +9,10 @@
 #include "read_from_file_test.h"
 
 
+Data client_data;
+Data transfer;
+FILE *Ptr, *Ptr_2, *blackrecord, *test;
+
 // потоки фсканф фпринтф дефайны тайпдефы хедеры
 int main(void) {
     int choice = 0;
