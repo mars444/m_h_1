@@ -6,6 +6,7 @@
 #include "write_transaction.h"
 #include "write_to_file_test.h"
 #include "black_record.h"
+#include "read_from_file_test.h"
 
 
 void blackRecord(FILE *ofPTR, FILE *ofPTR_2, FILE *blackrecord, Data client_data, Data transfer);
@@ -75,52 +76,20 @@ Data my_data = {
     .indebtedness = 123,
     .credit_limit = 124512,
     .cash_payments = 12525};
+
     test = fopen("my_test.dat", "w");
+
     write_to_file(test, my_data);
-    printf("Heoolo\n\n");
+
     fclose(test);
+
     Data my_data_2 = {0};
+
     test = fopen("my_test.dat", "r");
+
     read_from_file(test, my_data_2, my_data);
-        fclose(test);
 
-
-
-
+    fclose(test);
 
     return 0;
-}
-void read_from_file(FILE *ofPTR, Data client_data, Data my_data) {
-fscanf(ofPTR, "%d%20s%20s%30s%15s%lf%lf%lf",
-                  &client_data.Number,
-                  client_data.Name,
-                  client_data.Surname,
-                  client_data.addres,
-                  client_data.TelNumber,
-                  &client_data.indebtedness,
-                  &client_data.credit_limit,
-                  &client_data.cash_payments);
-                  printf("Записанные в новую структуру данные: \n");
-                  printf("%d\n%s\n%s\n%s\n%s\n%.2lf\n%.2lf\n%.2lf\n",
-                  client_data.Number,
-                  client_data.Name,
-                  client_data.Surname,
-                  client_data.addres,
-                  client_data.TelNumber,
-                  client_data.indebtedness,
-                  client_data.credit_limit,
-                  client_data.cash_payments);
-
-                   if ( (client_data.Number ==   my_data.Number) &&
-                        (*client_data.Name ==   *my_data.Name)  &&
-                        (*client_data.Surname ==     *my_data.Surname) &&
-                        (*client_data.addres ==  *my_data.addres) &&
-                        (*client_data.TelNumber ==   *my_data.TelNumber) &&
-                        (client_data.indebtedness ==  my_data.indebtedness) &&
-                        (client_data.credit_limit ==    my_data.credit_limit) &&
-                        (client_data.cash_payments ==      my_data.cash_payments) ) {
-        printf("Sucses\n");
-    } else {
-        printf("Error\n");
-    }
 }
