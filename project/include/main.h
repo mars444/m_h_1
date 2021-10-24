@@ -13,15 +13,16 @@ struct masterRecord { int Number;
                       double cash_payments;};
 typedef struct masterRecord Data;
 
-int write_about_client_to_file(FILE *ofPTR, Data Client);
+int write_about_client_to_file(FILE *filename, Data Client);
 int write_transaction_to_file(FILE *ofPTR2, Data transfer);
 void masterWrite(FILE *ofPTR, Data Client);
 void transactionWrite(FILE *ofPTR2, Data transfer);
 void blackRecord(FILE *ofPTR, FILE *ofPTR_2, FILE *blackrecord, Data client_data, Data transfer);
+int write_to_file(FILE *filename, Data Client);
 
     Data client_data;
     Data transfer;
-    FILE *Ptr, *Ptr_2, *blackrecord;
+    FILE *Ptr, *Ptr_2, *blackrecord, *test;
 
 
 #endif   //  PROJECT_INCLUDE_MAIN_H_

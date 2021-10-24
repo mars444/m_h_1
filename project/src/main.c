@@ -51,12 +51,42 @@ int main(void) {
         }
         printf("%s", "please enter action\n1 enter data client:\n2 enter data transaction:\n3 update base\n");
     }
+
+
+
+Data my_data = {
+    .Number = 12,
+    .Name = "Petr",
+    .Surname = "Pamuzhak",
+    .addres = "Podolsk",
+    .TelNumber = "+79251415930",
+    .indebtedness = 123,
+    .credit_limit = 124512,
+    .cash_payments = 12525};
+    test = fopen("my_test.dat", "w");
+    write_to_file(test, my_data);
+    printf("Heoolo\n\n");
+    fclose(test);
+
     return 0;
 }
 
 
 
-int write_about_client_to_file(FILE *ofPTR, Data Client) {
+int write_to_file(FILE *filename, Data Client) {
+fprintf(filename, "%-12d%-11s%-11s%-16s%20s%12.2f%12.2f%12.2f\n",    // 12 11 выведет максимум
+                Client.Number,
+                Client.Name,
+                Client.Surname,
+                Client.addres,
+                Client.TelNumber,
+                Client.indebtedness,
+                Client.credit_limit,
+                Client.cash_payments);
+                return 0;
+}
+
+int write_about_client_to_file(FILE *filename, Data Client) {
     if ( scanf("%d%20s%20s%30s%15s%lf%lf%lf",
                  &Client.Number,
                  Client.Name,
@@ -66,7 +96,7 @@ int write_about_client_to_file(FILE *ofPTR, Data Client) {
                  &Client.indebtedness,
                  &Client.credit_limit,
                  &Client.cash_payments) != -1 ) {
-fprintf(ofPTR, "%-12d%-11s%-11s%-16s%20s%12.2f%12.2f%12.2f\n",    // 12 11 выведет максимум
+fprintf(filename, "%-12d%-11s%-11s%-16s%20s%12.2f%12.2f%12.2f\n",    // 12 11 выведет максимум
                 Client.Number,
                 Client.Name,
                 Client.Surname,
