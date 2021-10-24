@@ -17,8 +17,5 @@ Data client_data;
 Data transfer;
 FILE *Ptr, *Ptr_2, *blackrecord, *test;
 
-
-
-
 #endif   //  PROJECT_INCLUDE_MAIN_H_
 //   pragma ""
