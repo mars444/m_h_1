@@ -12,9 +12,9 @@
 void blackRecord(FILE *ofPTR, FILE *ofPTR_2, FILE *blackrecord, Data client_data, Data transfer);
 int write_to_file(FILE *filename, Data Client);
 
-    Data client_data;
-    Data transfer;
-    FILE *Ptr, *Ptr_2, *blackrecord, *test;
+Data client_data;
+Data transfer;
+FILE *Ptr, *Ptr_2, *blackrecord, *test;
 void read_from_file(FILE *ofPTR, Data client_data, Data my_data);
 
 
@@ -54,7 +54,7 @@ int main(void) {
             } else {
                 blackRecord(Ptr, Ptr_2, blackrecord, client_data, transfer);
                 fclose(Ptr);
-                fclose(Ptr_2);   // fopen(). Она сохраняет в файл данные, находящиеся в дисковом буфере
+                fclose(Ptr_2);
                 fclose(blackrecord);
             }
             break;
@@ -77,19 +77,12 @@ Data my_data = {
     .credit_limit = 124512,
     .cash_payments = 12525};
 
-    test = fopen("my_test.dat", "w");
-
+    test = fopen("my_test.dat", "w");   // w  Открывает файл для записи
     write_to_file(test, my_data);
-
     fclose(test);
-
     Data my_data_2 = {0};
-
     test = fopen("my_test.dat", "r");
-
     read_from_file(test, my_data_2, my_data);
-
     fclose(test);
-
     return 0;
 }

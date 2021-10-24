@@ -10,7 +10,6 @@ void read_from_file(FILE *ofPTR, Data client_data, Data my_data) {
         &client_data.credit_limit,
         &client_data.cash_payments);
 
-
     printf("Записанные в новую структуру данные  из файла: \n");
     printf("Number : %d\nName : %s\nadSurname : %s\nadress : %s\nTelNumber : %s\nindebtedness : %.2lf\n",
         client_data.Number,

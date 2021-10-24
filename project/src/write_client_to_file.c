@@ -1,6 +1,6 @@
 #include "write_client_to_file.h"
 
-int a = 0;
+int exit_write = 0;
 int write_about_client_to_file(FILE *filename, Data Client) {
     if ( scanf("%d%20s%20s%30s%15s%lf%lf%lf",
                  &Client.Number,
@@ -20,7 +20,7 @@ fprintf(filename, "%-12d%-11s%-11s%-16s%20s%12.2f%12.2f%12.2f\n",    // 12 11 в
                 Client.indebtedness,
                 Client.credit_limit,
                 Client.cash_payments);} else {
-                    a = -1;
+                exit_write = -1;
                 }
                 return 0;
 }
@@ -38,7 +38,7 @@ void masterWrite(FILE *ofPTR, Data Client) {
            "7 Client credit limit: ",
            "8 Client cash payments: ");
 
-    while ( a != -1 ) {
+    while ( exit_write != -1 ) {
   write_about_client_to_file(ofPTR, Client);
   printf("%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n\n",
                "1 Number account: ",
