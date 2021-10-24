@@ -8,6 +8,16 @@
 #include "black_record.h"
 
 
+void blackRecord(FILE *ofPTR, FILE *ofPTR_2, FILE *blackrecord, Data client_data, Data transfer);
+int write_to_file(FILE *filename, Data Client);
+
+    Data client_data;
+    Data transfer;
+    FILE *Ptr, *Ptr_2, *blackrecord, *test;
+
+
+
+
 // потоки фсканф фпринтф дефайны тайпдефы хедеры
 int main(void) {
     int choice = 0;
