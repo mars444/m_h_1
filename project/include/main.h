@@ -3,7 +3,7 @@
 
 #include <stdio.h>
 
-struct masterRecord { int Number;
+struct user_sber { int Number;
                       char Name[20];
                       char Surname[20];
                       char addres[30];
@@ -11,7 +11,7 @@ struct masterRecord { int Number;
                       double indebtedness;
                       double credit_limit;
                       double cash_payments;};
-typedef struct masterRecord Data;
+typedef struct user_sber Data;
 
 #endif   //  PROJECT_INCLUDE_MAIN_H_
 //   pragma ""
