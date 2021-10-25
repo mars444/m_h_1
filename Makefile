@@ -5,7 +5,7 @@ SRCS = project/src/main.c \
        project/src/write_client_to_file.c \
 	   project/src/write_to_file_test.c \
 	   project/src/write_transaction.c \
-	   project/src/black_record.c \
+	   project/src/read_and_write.c \
 	   project/src/read_from_file_test.c
 
 .PHONY: all build rebuild check test memtest clean
