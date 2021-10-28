@@ -4,8 +4,8 @@ HDRS_DIR = project/include
 SRCS = project/src/main.c \
        project/src/master_write.c \
 	   project/src/write_to_file.c \
-	   project/src/write_transaction.c \
-	   project/src/read_and_write.c \
+	   project/src/transaction_write.c \
+	   project/src/black_record.c \
 	   project/src/read_from_file_test.c \
 	   project/src/function_cases.c \
 	   project/src/my_test.c \

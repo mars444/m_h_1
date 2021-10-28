@@ -20,7 +20,7 @@ int choice = 0;
             if ( Ptr == NULL ) {
                 puts("Not acess");
             } else {
-                transactionWrite(Ptr, transfer);
+                transaction_write(Ptr, transfer);
                 fclose(Ptr);
             }
             break;
@@ -31,7 +31,7 @@ int choice = 0;
             if ( Ptr == NULL || Ptr_2 == NULL || blackrecord == NULL ) {
                 puts("exit");
             } else {
-                blackRecord(Ptr, Ptr_2, blackrecord, client_data, transfer);
+                black_record(Ptr, Ptr_2, blackrecord, client_data, transfer);
                 fclose(Ptr);
                 fclose(Ptr_2);
                 fclose(blackrecord);

@@ -1,3 +1,3 @@
 #pragma once
 #include "main.h"
-void masterWrite(FILE *ofPTR, Data Client);
+void master_write(FILE *ofPTR, Data Client);
