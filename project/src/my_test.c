@@ -13,7 +13,8 @@ Data my_data = {
     .indebtedness = 1000,
     .credit_limit = 9999999,
     .cash_payments = 55555};
-    test = fopen("my_test.dat", "w");   // w  Открывает файл для записи
+
+    test = fopen("my_test.dat", "w");
     write_to_file(test, my_data);
     fclose(test);
     Data my_data_2 = {0};

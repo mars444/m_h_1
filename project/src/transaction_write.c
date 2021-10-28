@@ -1,4 +1,5 @@
 #include "transaction_write.h"
+
 int exit_transaction = 0;
 int write_transaction_to_file(FILE *ofPTR2, Data transfer) {
     if ( scanf("%d %lf", &transfer.Number, &transfer.cash_payments) != -1 ) {
@@ -7,6 +8,7 @@ int write_transaction_to_file(FILE *ofPTR2, Data transfer) {
                 }
     return 0;
 }
+
 void transaction_write(FILE *ofPTR2, Data transfer) {
     printf("%s\n%s\n",
            "1 Number account: ",
