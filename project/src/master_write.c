@@ -1,3 +1,4 @@
+#include "main.h"
 #include "master_write.h"
 #include "write_to_file_from_flow.h"
 void master_write(FILE *ofPTR, Data Client) {

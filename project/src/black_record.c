@@ -1,3 +1,4 @@
+#include "main.h"
 #include "black_record.h"
     void black_record(FILE *ofPTR, FILE *ofPTR_2, FILE *blackrecord, Data client_data, Data transfer) {
         while ( fscanf(ofPTR, "%d%20s%20s%30s%15s%lf%lf%lf",

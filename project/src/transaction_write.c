@@ -1,3 +1,4 @@
+#include "main.h"
 #include "transaction_write.h"
 
 int exit_transaction = 0;

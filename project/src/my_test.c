@@ -1,3 +1,4 @@
+#include "main.h"
 #include "my_test.h"
 #include "read_from_file_test.h"
 #include "write_to_file.h"

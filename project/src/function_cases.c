@@ -1,3 +1,4 @@
+#include "main.h"
 #include "function_cases.h"
 #define WRITE_ABOUT_CLIENT          1
 #define WRITE_TRANSACTION           2

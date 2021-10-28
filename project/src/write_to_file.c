@@ -1,3 +1,4 @@
+#include "main.h"
 #include "write_to_file.h"
 int write_to_file(FILE *filename, Data Client) {
     fprintf(filename, "%-12d%-11s%-11s%-16s%20s%12.2f%12.2f%12.2f\n",    // 12 11 выведет максимум

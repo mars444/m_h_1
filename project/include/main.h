@@ -12,7 +12,6 @@ struct user_sber { int Number;
 typedef struct user_sber Data;
 
 Data client_data;
-int test_write_function(void);
 Data transfer;
 FILE *Ptr, *Ptr_2, *blackrecord;
 //   pragma ""

@@ -1,3 +1,4 @@
+#include "main.h"
 #include "write_to_file.h"
 void read_from_file(FILE *ofPTR, Data client_data, Data my_data) {
     fscanf(ofPTR, "%d%20s%20s%30s%15s%lf%lf%lf",
