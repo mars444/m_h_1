@@ -18,8 +18,8 @@ int choice = 0;
             if ( Ptr == NULL ) {
                 puts("Not acess");
             } else {
-                int b = 0;
-                master_write(Ptr, client_data, b);
+                int ex = 0;
+                master_write(Ptr, client_data, ex);
                 fclose(Ptr);   // close
             }
             break;
