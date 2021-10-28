@@ -1,5 +1,4 @@
-#ifndef  PROJECT_INCLUDE_MAIN_H_
-#define  PROJECT_INCLUDE_MAIN_H_
+#pragma once
 
 #include <stdio.h>
 
@@ -17,6 +16,4 @@ Data client_data;
 int test_write_function(void);
 Data transfer;
 FILE *Ptr, *Ptr_2, *blackrecord;
-
-#endif   //  PROJECT_INCLUDE_MAIN_H_
 //   pragma ""
