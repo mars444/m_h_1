@@ -3,6 +3,9 @@
 #define WRITE_ABOUT_CLIENT          1
 #define WRITE_TRANSACTION           2
 #define REWRITE_CLIENT_CREDITLIMIT  3
+Data client_data;
+Data transfer;
+FILE *Ptr, *Ptr_2, *blackrecord;
 void function_cases(void) {
 int choice = 0;
 

@@ -10,8 +10,4 @@ struct user_sber { int Number;
                       double credit_limit;
                       double cash_payments;};
 typedef struct user_sber Data;
-
-Data client_data;
-Data transfer;
-FILE *Ptr, *Ptr_2, *blackrecord;
 //   pragma ""
