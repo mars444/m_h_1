@@ -1,6 +1,7 @@
 #include "main.h"
 #include "write_to_file_from_flow.h"
 #include "write_to_file.h"
+   int a;
 int write_to_file_from_flow(FILE *filename, Data Client) {
 if ( scanf("%d%20s%20s%30s%15s%lf%lf%lf",
                  &Client.Number,
@@ -13,7 +14,8 @@ if ( scanf("%d%20s%20s%30s%15s%lf%lf%lf",
                  &Client.cash_payments) != -1) {
         write_to_file(filename, Client);
                   } else {
-                        exit_scanf = -1;
+                        a = -1;
+                        return a;
                     }
     return 0;
 }

@@ -10,5 +10,4 @@ struct user_sber { int Number;
                       double credit_limit;
                       double cash_payments;};
 typedef struct user_sber Data;
-int exit_scanf;
 //   pragma ""
