@@ -11,7 +11,7 @@ int choice = 0;
             if ( Ptr == NULL ) {
                 puts("Not acess");
             } else {
-                masterWrite(Ptr, client_data);
+                master_write(Ptr, client_data);
                 fclose(Ptr);   // close
             }
             break;

@@ -1,8 +1,8 @@
-#include "my_test_write_function.h"
-#include "write_to_file_test.h"
+#include "my_test.h"
 #include "read_from_file_test.h"
+#include "write_to_file.h"
 
-void my_test_write_function(void) {
+void my_test(void) {
 FILE *test;
 Data my_data = {
     .Number = 444,
