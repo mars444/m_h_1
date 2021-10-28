@@ -1,7 +1,21 @@
 #include "write_client_to_file.h"
 
 int exit_write = 0;
+int exit_scanf = 0;
+int write_to_file(FILE *filename, Data Client);
+int read_from_scanf(FILE *filename, Data Client);
 int write_about_client_to_file(FILE *filename, Data Client) {
+    if ( exit_scanf != -1 ) {
+         read_from_scanf(filename, Client);
+    } else {
+                exit_write = -1;
+                }
+                return 0;
+}
+
+
+
+int read_from_scanf(FILE *filename, Data Client) {
     if ( scanf("%d%20s%20s%30s%15s%lf%lf%lf",
                  &Client.Number,
                  Client.Name,
@@ -10,19 +24,12 @@ int write_about_client_to_file(FILE *filename, Data Client) {
                  Client.TelNumber,
                  &Client.indebtedness,
                  &Client.credit_limit,
-                 &Client.cash_payments) != -1 ) {
-fprintf(filename, "%-12d%-11s%-11s%-16s%20s%12.2f%12.2f%12.2f\n",    // 12 11 выведет максимум
-                Client.Number,
-                Client.Name,
-                Client.Surname,
-                Client.addres,
-                Client.TelNumber,
-                Client.indebtedness,
-                Client.credit_limit,
-                Client.cash_payments);} else {
-                exit_write = -1;
-                }
-                return 0;
+                 &Client.cash_payments) != -1) {
+                     write_to_file(filename, Client);
+                  } else {
+                      exit_scanf = -1;
+                  }
+                 return 0;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////

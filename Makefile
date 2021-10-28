@@ -6,7 +6,8 @@ SRCS = project/src/main.c \
 	   project/src/write_to_file_test.c \
 	   project/src/write_transaction.c \
 	   project/src/read_and_write.c \
-	   project/src/read_from_file_test.c
+	   project/src/read_from_file_test.c \
+	   project/src/test.c \
 
 .PHONY: all build rebuild check test memtest clean
 
