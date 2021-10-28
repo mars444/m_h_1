@@ -1,11 +1,12 @@
 #include "main.h"
 #include "black_record.h"
+// black_record слепая запись
     void black_record(FILE *ofPTR, FILE *ofPTR_2, FILE *blackrecord, Data client_data, Data transfer) {
         while ( fscanf(ofPTR, "%d%20s%20s%30s%15s%lf%lf%lf",
                   &client_data.Number,
                   client_data.Name,
                   client_data.Surname,
-                  client_data.addres,
+                  client_data.addres,    // пока не встретил EOF (cntl + D)
                   client_data.TelNumber,
                   &client_data.indebtedness,
                   &client_data.credit_limit,
@@ -19,7 +20,7 @@
                 client_data.Number,
                 client_data.Name,
                 client_data.Surname,
-                client_data.addres,
+                client_data.addres,   //  запись в  blackrecord
                 client_data.TelNumber,
                 client_data.indebtedness,
                 client_data.credit_limit,
