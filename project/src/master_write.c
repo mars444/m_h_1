@@ -1,7 +1,6 @@
 #include "main.h"
 #include "master_write.h"
 #include "write_to_file_from_flow.h"
-int exit_scanf;
 void master_write(FILE *ofPTR, Data Client) {
     printf("%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n\n",
            "1 Number account: ",
