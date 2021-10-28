@@ -1,4 +1,7 @@
 #include "function_cases.h"
+#define WRITE_ABOUT_CLIENT          1
+#define WRITE_TRANSACTION           2
+#define REWRITE_CLIENT_CREDITLIMIT  3
 void function_cases(void) {
 int choice = 0;
 
@@ -6,7 +9,7 @@ int choice = 0;
 
     while ( scanf("%d", &choice) != -1 ) {
         switch (choice) {
-        case 1:
+        case WRITE_ABOUT_CLIENT:
             Ptr = fopen("record.dat", "r+");   // r+  Открывает файл для чтения/записи
             if ( Ptr == NULL ) {
                 puts("Not acess");
@@ -15,7 +18,7 @@ int choice = 0;
                 fclose(Ptr);   // close
             }
             break;
-        case 2:
+        case WRITE_TRANSACTION:
             Ptr = fopen("transaction.dat", "r+");  // r+  Открывает файл для чтения/записи
             if ( Ptr == NULL ) {
                 puts("Not acess");
@@ -24,7 +27,7 @@ int choice = 0;
                 fclose(Ptr);
             }
             break;
-        case 3:
+        case REWRITE_CLIENT_CREDITLIMIT:
             Ptr = fopen("record.dat", "r");                 // r открытие файла для чтения.
             Ptr_2 = fopen("transaction.dat", "r");         // r открытие файла для чтения.
             blackrecord = fopen("blackrecord.dat", "w");   // w  создать файл для е будут уничтожены.
