@@ -12,7 +12,7 @@
 Data client_data;
 int test_write_function(void);
 Data transfer;
-FILE *Ptr, *Ptr_2, *blackrecord, *test;
+FILE *Ptr, *Ptr_2, *blackrecord;
 
 // потоки фсканф фпринтф дефайны тайпдефы хедеры
 int main(void) {
