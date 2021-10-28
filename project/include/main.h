@@ -13,5 +13,10 @@ struct user_sber { int Number;
                       double cash_payments;};
 typedef struct user_sber Data;
 
+Data client_data;
+int test_write_function(void);
+Data transfer;
+FILE *Ptr, *Ptr_2, *blackrecord;
+
 #endif   //  PROJECT_INCLUDE_MAIN_H_
 //   pragma ""

@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stddef.h>
 #include <stdlib.h>
-#include "main.h"
 #include "write_client_to_file.h"
 #include "write_transaction.h"
 #include "write_to_file_test.h"
@@ -9,10 +8,6 @@
 #include "read_from_file_test.h"
 
 
-Data client_data;
-int test_write_function(void);
-Data transfer;
-FILE *Ptr, *Ptr_2, *blackrecord;
 
 // потоки фсканф фпринтф дефайны тайпдефы хедеры
 int main(void) {
