@@ -61,7 +61,7 @@ int get_rows(const Matrix* matrix, size_t* rows) {  //  получить кол�
 }
 
 
-int get_rows(const Matrix* matrix, size_t* cols) {  //   получить количество столбцов.
+int get_cols(const Matrix* matrix, size_t* cols) {  //   получить количество столбцов.
 *cols = matrix->rows;
     return 0;
 }
@@ -78,12 +78,36 @@ matrix->arr[row][col] = val;
 return 0;
 }
 
-Matrix* mul_scalar(const Matrix* matrix, double val) {
+Matrix* mul_scalar(const Matrix* matrix, double val) {  //  умножение матрицы на число
 
-    for (size_t i = 0; i < matrix->cols; i++) {
-        for (size_t j = 0; j < matrix->rows; j++) {
+Matrix* matrix_num;
+matrix_num = (Matrix *)malloc(sizeof(Matrix));
+size_t i, j, rows = matrix->rows, cols = matrix->cols;
 
-                matrix->arr[i][j] =  matrix->arr[i][j] * val;
-      }
+    matrix_num->arr = (double**)malloc(rows*sizeof(double*));
+    for ( i = 0; i < rows; i++ ) {
+        matrix_num->arr[i]=(double*)malloc(cols*sizeof(double));
+        for ( j = 0; j < cols; j++ ) {
+           matrix_num->arr[i][j] =  matrix->arr[i][j] * val;
+        }
     }
+    return matrix_num;
+}
+
+Matrix* transp(const Matrix* matrix) {  //  транспонирование матрицы
+
+Matrix* matrix_t;
+size_t rows_t = matrix->cols;
+size_t cols_t = matrix->rows;
+
+matrix_t = (Matrix *)malloc(sizeof(Matrix));
+    size_t i, j;
+    matrix_t->arr = (double**)malloc(rows_t*sizeof(double*));
+    for ( i = 0; i < rows_t; i++ ) {
+        matrix_t->arr[i]=(double*)malloc(cols_t*sizeof(double));
+        for ( j = 0; j < cols_t; j++ ) {
+            matrix_t->arr[i][j] = matrix->arr[j][i];
+        }
+    }
+    return matrix_t;
 }
