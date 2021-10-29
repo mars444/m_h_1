@@ -22,6 +22,7 @@ Matrix* create_matrix(size_t rows, size_t cols) {
 Matrix* create_matrix_from_file(const char* path_file) {
     Matrix* matrix;
     matrix = (Matrix *)malloc(sizeof(Matrix));
+  
     int  i, j;
     int a;
     FILE* Ptr;
@@ -53,3 +54,36 @@ free(matrix);
 }
 
 
+
+int get_rows(const Matrix* matrix, size_t* rows) {  //  получить количество строк.
+*rows = matrix->rows;
+    return 0;
+}
+
+
+int get_rows(const Matrix* matrix, size_t* cols) {  //   получить количество столбцов.
+*cols = matrix->rows;
+    return 0;
+}
+
+int get_elem(const Matrix* matrix, size_t row, size_t col, double* val) { 
+// получить значение элемента на позиции [<row>, <col>]
+*val = matrix->arr[row][col];
+return 0;
+}
+
+int set_elem(Matrix* matrix, size_t row, size_t col, double val) {
+    //установить значение val элементу на позиции [<row>, <col>]
+matrix->arr[row][col] = val;
+return 0;
+}
+
+Matrix* mul_scalar(const Matrix* matrix, double val) {
+
+    for (size_t i = 0; i < matrix->cols; i++) {
+        for (size_t j = 0; j < matrix->rows; j++) {
+
+                matrix->arr[i][j] =  matrix->arr[i][j] * val;
+      }
+    }
+}
