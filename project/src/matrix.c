@@ -44,3 +44,12 @@ Matrix* create_matrix_from_file(const char* path_file) {
     return matrix;
 }
 
+void free_matrix(Matrix* matrix) {
+
+for (size_t i = 0; i < matrix->rows;i++) {
+    free(matrix->arr[i]);
+}
+free(matrix);
+}
+
+
