@@ -111,12 +111,11 @@ matrix_t = (Matrix *)malloc(sizeof(Matrix));
     }
     return matrix_t;
 }
-Matrix* sum(const Matrix* l, const Matrix* r) {
 
+
+Matrix* sum(const Matrix* l, const Matrix* r) {
 Matrix* matrix_sum;
 matrix_sum = (Matrix *)malloc(sizeof(Matrix));
-
-
 matrix_sum = (Matrix *)malloc(sizeof(Matrix));
     size_t i, j;
     matrix_sum->arr = (double**)malloc(l->rows*sizeof(double*));
@@ -127,4 +126,20 @@ matrix_sum = (Matrix *)malloc(sizeof(Matrix));
         }
     }
     return matrix_sum;
+}
+
+
+Matrix* sub(const Matrix* l, const Matrix* r) {
+Matrix* matrix_sub;
+matrix_sub = (Matrix *)malloc(sizeof(Matrix));
+matrix_sub = (Matrix *)malloc(sizeof(Matrix));
+    size_t i, j;
+    matrix_sub->arr = (double**)malloc(l->rows*sizeof(double*));
+    for ( i = 0; i < l->rows; i++ ) {
+        matrix_sub->arr[i]=(double*)malloc(l->cols*sizeof(double));
+        for ( j = 0; j < l->cols; j++ ) {
+            matrix_sub->arr[i][j] = l->arr[j][i] + r->arr[j][i];
+        }
+    }
+    return matrix_sub;
 }
