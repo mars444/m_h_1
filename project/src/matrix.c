@@ -80,6 +80,9 @@ Matrix* mul_scalar(const Matrix* matrix, double val) {  //  умножение �
 Matrix* matrix_num;
 matrix_num = (Matrix *)malloc(sizeof(Matrix));
 size_t i, j, rows = matrix->rows, cols = matrix->cols;
+matrix_num->rows = matrix->rows;
+matrix_num->cols = matrix->cols;
+
 
     matrix_num->arr = (double**)malloc(rows*sizeof(double*));
     for ( i = 0; i < rows; i++ ) {
@@ -94,15 +97,15 @@ size_t i, j, rows = matrix->rows, cols = matrix->cols;
 Matrix* transp(const Matrix* matrix) {  //  транспонирование матрицы
 
 Matrix* matrix_t;
-size_t rows_t = matrix->cols;
-size_t cols_t = matrix->rows;
-
 matrix_t = (Matrix *)malloc(sizeof(Matrix));
-    size_t i, j;
-    matrix_t->arr = (double**)malloc(rows_t*sizeof(double*));
-    for ( i = 0; i < rows_t; i++ ) {
-        matrix_t->arr[i]=(double*)malloc(cols_t*sizeof(double));
-        for ( j = 0; j < cols_t; j++ ) {
+size_t i, j, rows = matrix->rows, cols = matrix->cols;
+matrix_t->rows = matrix->cols;
+matrix_t->cols = matrix->rows;
+
+    matrix_t->arr = (double**)malloc(cols*sizeof(double*));
+    for ( i = 0; i < cols; i++ ) {
+        matrix_t->arr[i]=(double*)malloc(rows*sizeof(double));
+        for ( j = 0; j < rows; j++ ) {
             matrix_t->arr[i][j] = matrix->arr[j][i];
         }
     }

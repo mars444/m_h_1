@@ -14,6 +14,8 @@ int main() {
        mul(ll, rr);
        create_matrix(3, 6);
 
+       mul_scalar(ll, 5);
+
   return 0;
 }
 
