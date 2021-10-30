@@ -3,8 +3,10 @@
 
 
 typedef struct Matrix {
+    size_t rows;
+    size_t cols;
     double** arr;
-    size_t rows, cols;
+  
 } Matrix;
 
 // Init/release operations

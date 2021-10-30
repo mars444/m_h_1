@@ -6,15 +6,14 @@ Matrix* create_matrix(size_t rows, size_t cols) {
     Matrix* matrix;
     matrix = (Matrix *)malloc(sizeof(Matrix));
     size_t i, j;
+    matrix->cols = cols;
+    matrix->rows = rows;
     matrix->arr = (double**)malloc(rows*sizeof(double*));
     for ( i = 0; i < rows; i++ ) {
         matrix->arr[i]=(double*)malloc(cols*sizeof(double));
         for ( j = 0; j < cols; j++ ) {
             matrix->arr[i][j] = 0;
-            int a = matrix->arr[i][j];
-            printf("%5d ", a );
         }
-        printf("\n");
     }
     return matrix;
 }
@@ -24,23 +23,21 @@ Matrix* create_matrix_from_file(const char* path_file) {
     matrix = (Matrix *)malloc(sizeof(Matrix));
   
     int  i, j;
-    int a;
+    double a;
     FILE* Ptr;
     Ptr = fopen(path_file, "r");
-    int rows, cols;
-        fscanf(Ptr, "%d", &rows);
-        fscanf(Ptr, "%d", &cols);
+    int rows = 0, cols = 0;
+        fscanf(Ptr, "%d%d", &rows,&cols);
+        matrix->rows = rows;
+        matrix->cols = cols;
          matrix->arr = (double**)malloc(rows*sizeof(double*));
         for (i = 0; i < rows; i++) {
             matrix->arr[i] = (double*)malloc(cols*sizeof(double));
             for (j = 0; j < cols; j++) {
-                fscanf(Ptr, "%d", &a);
-                printf("%5d",  a);
+                fscanf(Ptr, "%lf", &a);
                 matrix->arr[i][j] = a;
       }
-      printf("\n");
     }
-    printf("\n");
     fclose(Ptr);
     return matrix;
 }
@@ -62,7 +59,7 @@ int get_rows(const Matrix* matrix, size_t* rows) {  //  получить кол�
 
 
 int get_cols(const Matrix* matrix, size_t* cols) {  //   получить количество столбцов.
-*cols = matrix->rows;
+*cols = matrix->cols;
     return 0;
 }
 
@@ -113,17 +110,22 @@ matrix_t = (Matrix *)malloc(sizeof(Matrix));
 }
 
 
+
+
 Matrix* sum(const Matrix* l, const Matrix* r) {
 Matrix* matrix_sum;
 matrix_sum = (Matrix *)malloc(sizeof(Matrix));
     size_t i, j;
+    matrix_sum->rows = l->rows;
+    matrix_sum->cols = l->cols;
     matrix_sum->arr = (double**)malloc(l->rows*sizeof(double*));
     for ( i = 0; i < l->rows; i++ ) {
         matrix_sum->arr[i]=(double*)malloc(l->cols*sizeof(double));
         for ( j = 0; j < l->cols; j++ ) {
-            matrix_sum->arr[i][j] = l->arr[j][i] + r->arr[j][i];
+            matrix_sum->arr[i][j] = l->arr[i][j] + r->arr[i][j];
         }
     }
+     
     return matrix_sum;
 }
 
@@ -132,34 +134,61 @@ Matrix* sub(const Matrix* l, const Matrix* r) {
 Matrix* matrix_sub;
 matrix_sub = (Matrix *)malloc(sizeof(Matrix));
     size_t i, j;
+    matrix_sub->rows = l->rows;
+    matrix_sub->cols = l->cols;
     matrix_sub->arr = (double**)malloc(l->rows*sizeof(double*));
     for ( i = 0; i < l->rows; i++ ) {
         matrix_sub->arr[i]=(double*)malloc(l->cols*sizeof(double));
         for ( j = 0; j < l->cols; j++ ) {
-            matrix_sub->arr[i][j] = l->arr[j][i] + r->arr[j][i];
-        }
-    }
+            matrix_sub->arr[i][j] = l->arr[i][j] - r->arr[i][j];
+        } 
+    } 
+     
     return matrix_sub;
 }
 
 
 
 Matrix* mul(const Matrix* l, const Matrix* r) {
-
 Matrix* matrix_mul;
+
 matrix_mul = (Matrix *)malloc(sizeof(Matrix));
-matrix_mul = (Matrix *)malloc(sizeof(Matrix));
-    size_t i, j, k;
+     size_t i, j, k;
+    matrix_mul->rows = l->rows;
+    matrix_mul->cols = r->cols;
     matrix_mul->arr = (double**)malloc(l->rows*sizeof(double*));
- for (i = 0; i < l->cols; i++)
-  {
-      matrix_mul->arr[i]=(double*)malloc(r->cols*sizeof(double));
-    for (j = 0; j < r->rows; j++)
-    {
-      matrix_mul->arr[i][j] = 0;
-      for (k = 0; k < l->rows; k++)
-        matrix_mul->arr[i][j] = matrix_mul->arr[i][j] +  (r->arr[i][k] * l->arr[k][j]);
+    for ( i = 0; i < l->rows; i++ ) {
+        matrix_mul->arr[i]=(double*)malloc(r->cols*sizeof(double));
+        for ( j = 0; j < r->cols; j++ ) {
+            matrix_mul->arr[i][j] = 0;
+      
+      for (k = 0; k < r->rows; k++) {
+       
+        matrix_mul->arr[i][j] = matrix_mul->arr[i][j] +  (r->arr[k][j] * l->arr[i][k]);
+       
+      }
+        }
     }
-  }
+
     return matrix_mul;
+}
+
+
+int det(const Matrix* matrix, double* val) {
+*val = matrix->rows;
+return 0;
+}
+
+Matrix* adj(const Matrix* matrix) {
+Matrix* matrix_sub;
+matrix_sub = (Matrix *)malloc(sizeof(Matrix));
+matrix_sub->arr[4][4] = matrix->arr[4][2];
+return matrix_sub;
+}
+
+Matrix* inv(const Matrix* matrix) {
+    Matrix* matrix_sub;
+matrix_sub = (Matrix *)malloc(sizeof(Matrix));
+matrix_sub->arr[4][4] = matrix->arr[4][2];
+return matrix_sub;
 }
