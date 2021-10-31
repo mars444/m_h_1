@@ -3,14 +3,20 @@
 #include <stdlib.h>
 
 Matrix* create_matrix(size_t rows, size_t cols) {
+    if (cols == 0 || rows == 0) {
+        return NULL;
+}
     Matrix* matrix;
     matrix = (Matrix *)malloc(sizeof(Matrix));
     size_t i, j;
     matrix->cols = cols;
     matrix->rows = rows;
+    printf("rows before malloc:%zu\n", rows);
+    printf("cols before malloc:%zu\n", cols);
     matrix->arr = (double**)malloc(rows*sizeof(double*));
+
     for ( i = 0; i < rows; i++ ) {
-        matrix->arr[i]=(double*)malloc(cols*sizeof(double));
+        matrix->arr[i] = (double*)malloc(cols*sizeof(double));
         for ( j = 0; j < cols; j++ ) {
             matrix->arr[i][j] = 0;
         }
@@ -21,13 +27,12 @@ Matrix* create_matrix(size_t rows, size_t cols) {
 Matrix* create_matrix_from_file(const char* path_file) {
     Matrix* matrix;
     matrix = (Matrix *)malloc(sizeof(Matrix));
-  
     int  i, j;
     double a;
     FILE* Ptr;
     Ptr = fopen(path_file, "r");
     int rows = 0, cols = 0;
-        fscanf(Ptr, "%d%d", &rows,&cols);
+        fscanf(Ptr, "%d%d", &rows, &cols);
         matrix->rows = rows;
         matrix->cols = cols;
          matrix->arr = (double**)malloc(rows*sizeof(double*));
@@ -43,14 +48,11 @@ Matrix* create_matrix_from_file(const char* path_file) {
 }
 
 void free_matrix(Matrix* matrix) {
-
-for (size_t i = 0; i < matrix->rows;i++) {
+for (size_t i = 0; i < matrix->rows; i++) {
     free(matrix->arr[i]);
 }
 free(matrix);
 }
-
-
 
 int get_rows(const Matrix* matrix, size_t* rows) {  //  получить количество строк.
 *rows = matrix->rows;
@@ -63,20 +65,21 @@ int get_cols(const Matrix* matrix, size_t* cols) {  //   получить кол
     return 0;
 }
 
-int get_elem(const Matrix* matrix, size_t row, size_t col, double* val) { 
+int get_elem(const Matrix* matrix, size_t row, size_t col, double* val) {
 // получить значение элемента на позиции [<row>, <col>]
 *val = matrix->arr[row][col];
 return 0;
 }
 
 int set_elem(Matrix* matrix, size_t row, size_t col, double val) {
-    //установить значение val элементу на позиции [<row>, <col>]
 matrix->arr[row][col] = val;
 return 0;
 }
 
 Matrix* mul_scalar(const Matrix* matrix, double val) {  //  умножение матрицы на число
-
+    if (matrix == NULL || matrix->cols == 0 || matrix->rows == 0) {
+    return NULL;
+}
 Matrix* matrix_num;
 matrix_num = (Matrix *)malloc(sizeof(Matrix));
 size_t i, j, rows = matrix->rows, cols = matrix->cols;
@@ -95,7 +98,9 @@ matrix_num->cols = matrix->cols;
 }
 
 Matrix* transp(const Matrix* matrix) {  //  транспонирование матрицы
-
+    if (matrix == NULL || matrix->cols == 0 || matrix->rows == 0) {
+    return NULL;
+}
 Matrix* matrix_t;
 matrix_t = (Matrix *)malloc(sizeof(Matrix));
 size_t i, j, rows = matrix->rows, cols = matrix->cols;
@@ -116,6 +121,10 @@ matrix_t->cols = matrix->rows;
 
 
 Matrix* sum(const Matrix* l, const Matrix* r) {
+    if (l == NULL || r == NULL || l->cols == 0 || l->rows == 0 ||
+    r->cols == 0 || r->rows == 0) {
+    return NULL;
+}
 Matrix* matrix_sum;
 matrix_sum = (Matrix *)malloc(sizeof(Matrix));
     size_t i, j;
@@ -128,12 +137,15 @@ matrix_sum = (Matrix *)malloc(sizeof(Matrix));
             matrix_sum->arr[i][j] = l->arr[i][j] + r->arr[i][j];
         }
     }
-     
     return matrix_sum;
 }
 
 
 Matrix* sub(const Matrix* l, const Matrix* r) {
+       if (l == NULL || r == NULL || l->cols == 0 || l->rows == 0 ||
+    r->cols == 0 || r->rows == 0) {
+    return NULL;
+}
 Matrix* matrix_sub;
 matrix_sub = (Matrix *)malloc(sizeof(Matrix));
     size_t i, j;
@@ -144,31 +156,32 @@ matrix_sub = (Matrix *)malloc(sizeof(Matrix));
         matrix_sub->arr[i]=(double*)malloc(l->cols*sizeof(double));
         for ( j = 0; j < l->cols; j++ ) {
             matrix_sub->arr[i][j] = l->arr[i][j] - r->arr[i][j];
-        } 
-    } 
-     
+        }
+    }
     return matrix_sub;
 }
 
 
 
 Matrix* mul(const Matrix* l, const Matrix* r) {
+       if (l == NULL || r == NULL || l->cols == 0 || l->rows == 0 ||
+    r->cols == 0 || r->rows == 0) {
+    return NULL;
+}
 Matrix* matrix_mul;
 
 matrix_mul = (Matrix *)malloc(sizeof(Matrix));
+
      size_t i, j, k;
     matrix_mul->rows = l->rows;
     matrix_mul->cols = r->cols;
-    matrix_mul->arr = (double**)malloc(l->rows*sizeof(double*));
-    for ( i = 0; i < l->rows; i++ ) {
-        matrix_mul->arr[i]=(double*)malloc(r->cols*sizeof(double));
-        for ( j = 0; j < r->cols; j++ ) {
+    matrix_mul->arr = (double**)malloc(matrix_mul->rows*sizeof(double*));
+    for ( i = 0; i < matrix_mul->rows; i++ ) {
+        matrix_mul->arr[i]=(double*)malloc(matrix_mul->cols*sizeof(double));
+        for ( j = 0; j < matrix_mul->cols; j++ ) {
             matrix_mul->arr[i][j] = 0;
-      
       for (k = 0; k < r->rows; k++) {
-       
         matrix_mul->arr[i][j] = matrix_mul->arr[i][j] +  (r->arr[k][j] * l->arr[i][k]);
-       
       }
         }
     }
@@ -177,21 +190,24 @@ matrix_mul = (Matrix *)malloc(sizeof(Matrix));
 }
 
 
-int det(const Matrix* matrix, double* val) {
-*val = matrix->rows;
-return 0;
-}
+
 
 Matrix* adj(const Matrix* matrix) {
-Matrix* matrix_sub;
+    Matrix* matrix_sub;
 matrix_sub = (Matrix *)malloc(sizeof(Matrix));
-matrix_sub->arr[4][4] = matrix->arr[4][2];
+matrix_sub->cols = matrix->cols;
 return matrix_sub;
 }
 
 Matrix* inv(const Matrix* matrix) {
     Matrix* matrix_sub;
-matrix_sub = (Matrix *)malloc(sizeof(Matrix));
-matrix_sub->arr[4][4] = matrix->arr[4][2];
+    matrix_sub = (Matrix*)malloc(sizeof(Matrix));
+matrix_sub->cols = matrix->cols;
 return matrix_sub;
+}
+
+
+int det(const Matrix* matrix, double* val) {
+*val = matrix->rows;
+return 0;
 }
