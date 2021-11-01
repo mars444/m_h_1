@@ -5,6 +5,9 @@ Matrix *sum(const Matrix *l, const Matrix *r) {
         r->cols == 0 || r->rows == 0) {
         return NULL;
     }
+    if (l->cols != r->cols || l->rows != r->rows) {
+        return NULL;
+    }
     Matrix *matrix_sum;
     matrix_sum = (Matrix *)malloc(sizeof(Matrix));
     if (!matrix_sum) {
