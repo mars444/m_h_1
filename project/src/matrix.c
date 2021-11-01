@@ -288,5 +288,5 @@ int det(const Matrix *matrix, double *val) {
     if (matrix && val) {
         return -1;
     }
-    return matrix;
+    return 0;
 }
