@@ -2,8 +2,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-
-
 Matrix *adj(const Matrix *matrix) {
     Matrix *matrix_sub;
     matrix_sub = (Matrix *)malloc(sizeof(Matrix));
