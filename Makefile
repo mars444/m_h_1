@@ -8,8 +8,18 @@ HDRS = \
 	   project/include
 
 SRCS = \
-	   project/src/main.c \
-	   project/src/matrix.c
+	    project/src/main.c \
+	    project/src/matrix.c \
+	    project/src/create_matrix_from_file.c \
+	    project/src/create_matrix.c \
+	   	project/src/free_matrix.c \
+	   	project/src/matrix_get_set.c \
+	   	project/src/matrix_mul.c \
+		project/src/matrix_sub.c \
+	  	project/src/matrix_transp.c \
+	   	project/src/mul_scalar.c \
+		project/src/matrix_sum.c
+	   
 
 # Test
 TST_HDRS = \
