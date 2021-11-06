@@ -1,15 +1,109 @@
 #include <stdlib.h>
+#include <string.h>
 #include <stdio.h>
 
+#include "1.c"
 
-int main(int argc, const char **argv) {
-    if (argc != 2) {
-        return -1;
+typedef struct
+{
+    char *eml_from;
+    char *eml_to;
+    char *eml_date;
+    int eml_parts;
+} eml_t;
+
+int main(void)
+{
+    int count_lines = 0;
+    eml_t *abcd;
+    abcd = calloc(1, sizeof(eml_t));
+    int a = 0, b = 0, c = 0;
+    FILE *ics;
+    char filename[20], line[150];
+    int i = 0;
+
+    printf("Please enter your group:  ");
+    scanf("%s", filename);
+    strcat(filename, ".ics");
+    ics = fopen(filename, "r");
+    if (ics == NULL){
+        printf("11\n");
+ return -1;
     }
+       
 
-    const char *path_to_eml = argv[1];
-    puts(path_to_eml);
+printf("2\n");
+    char *red = "12345";
+    printf("2\n");
+    red = search();
 
+    printf("перед цмклом|||%s|||\n\n", red);
+    while (fgets(line, sizeof(line), ics) != NULL)
+    {
+        char *separator;
+        char *key;
+        char *tail;
+        char *value;
+
+       if(red != NULL) {
+           if (!strstr(line, "boundary") && strstr(line, red))
+            {
+                i++;
+            }
+       } else {
+           i=1;
+       }
+            
+        
+
+        if ((tail = strchr(line, '\n')) != NULL)
+        {
+            *tail = '\0';
+        }
+        separator = strpbrk(line, ":");
+        if (separator == NULL)
+            continue;
+        *separator = '\0';
+        key = line;
+        value = separator + 2;
+
+        if (a == 0 )
+        {
+            if (!strcmp(key, "From"))
+            {
+                char *from_begin = value;
+                char *from_end = strchr(from_begin, '\n');
+                abcd->eml_from = strndup(from_begin, from_begin - from_end);
+                a++;
+            }
+        }
+        if (b == 0)
+        {
+            if (!strcmp(key, "To"))
+            {
+                char *to_begin = value;
+                char *to_end = strchr(to_begin, '\n');
+                abcd->eml_to = strndup(to_begin, to_begin - to_end);
+                b++;
+            }
+        }
+        if (c == 0)
+        {
+            if (!strcmp(key, "Date"))
+            {
+                char *date_begin = value;
+                char *date_end = strchr(date_begin, '\n');
+                abcd->eml_date = strndup(date_begin, date_begin - date_end);
+                c++;
+            }
+        }
+        count_lines++;
+    }
+    abcd->eml_parts = i;
+
+    fclose(ics);
+
+    printf("%s | %s | %s | %d\n", abcd->eml_from, abcd->eml_to, abcd->eml_date, abcd->eml_parts);
     return 0;
 }
-//  start
+
