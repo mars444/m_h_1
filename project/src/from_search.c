@@ -12,7 +12,6 @@ typedef struct
     int eml_parts;
     char *from;
     char *to;
-    char *date;
 } eml_t;
 
 int main(void)
@@ -38,38 +37,15 @@ int main(void)
     char *red;
     printf("2\n");
     red = search();
-    char *startline_date;
-
-  
-    char *date_begin = "";
+    char *startline_from;
+    char *startline_to;
+    char *from_begin = "";
+    char *to_begin = "";
 
     while (fgets(line, sizeof(line), ics) != NULL)
     {
 
-
-         startline_date = strstr(line, "Date:");
-
-        if (startline_date != NULL && startline_date[-1] == '\0' )
-        {
-
-            date_begin = startline_date + 5;
-            int i = 0;
-            while (date_begin[i] == ' ')
-            {
-                date_begin = date_begin + 1;
-                i++;
-            }
-            char *date_end = strchr(date_begin, '\n');
-            date_end[0] = ' ';
-
-        
-
-            abcd->date = strndup(date_begin, date_begin - date_end);
-          
-        }
-
-
-        if (abcd->date && abcd->eml_date == NULL)
+        if (abcd->from)
         {
             if (strstr(line, "Subject:") ||
                 strstr(line, "From:") ||
@@ -79,32 +55,46 @@ int main(void)
                 strstr(line, "Date:") ||
                 strstr(line, "Message-ID:") ||
                 strstr(line, "Mime-Version:") ||
-                strstr(line, "Delivered-To:"))
-
+                strstr(line, "Received:"))
             {
 
 
-                if (abcd->date)
+                if (abcd->from)
             {
                 
-                abcd->date[strlen(abcd->date)-1] = '\0';
+                abcd->from[strlen(abcd->from)-1] = '\0';
             }
-                abcd->eml_date = abcd->date;
-                printf("line itog :  |||%s|||\n", abcd->eml_date);
+                abcd->eml_from = abcd->from;
 
-                abcd->date = NULL;
+                abcd->from = NULL;
             }
-            if (abcd->date)
+            if (abcd->from)
             {
-                abcd->date = strcat(abcd->date, line);
-                abcd->date[strlen(abcd->date)-1] = ' ';
+                abcd->from = strcat(abcd->from, line);
+                abcd->from[strlen(abcd->from)-1] = ' ';
             }
         }
 
-       
+        startline_from = strstr(line, "From:");
+
+        if (startline_from != NULL)
+        {
+
+            from_begin = startline_from + 5;
+            int i = 0;
+            while (from_begin[i] == ' ')
+            {
+                from_begin = from_begin + 1;
+                i++;
+            }
+            char *from_end = strchr(from_begin, '\n');
+            from_end[0] = ' ';
+
+            abcd->from = strndup(from_begin, from_begin - from_end);
+        }
     }
 
-    
+    printf("line itog :  |||%s|||\n", abcd->eml_from);
     free(abcd);
     return 0;
 }
