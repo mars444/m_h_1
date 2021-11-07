@@ -2,106 +2,51 @@
 #include <string.h>
 #include <stdio.h>
 
-#define _POSIX_C_SOUCRE 200809L
-
-size_t strnlen(const char *str, size_t len)
-{
-    for (size_t size = 0; size < len; size++)
-    {
-        if (str[size] == '\0')
-            return size;
-    }
-    return len;
-}
-char *strndup(const char *str, size_t len)
-{
-    size_t act = strnlen(str, len);
-    char *dst = malloc(act + 1);
-    if (dst != 0)
-    {
-        memmove(dst, str, act);
-        dst[act] = '\0';
-    }
-    return dst;
-}
-
-
-
 char *search(void)
 {
-    char *istr = "";
-    char *boudary_value_begin;
-    char *boudary_value_end;
-    char *string = "";
+    
     FILE *ics;
-    char lineq[150];
+    char line[300];
+    int i = 0;
+
+    char *boundary_final;
 
     ics = fopen("1.ics", "r");
     if (ics == NULL)
-        return NULL;
-    while (fgets(lineq, sizeof(lineq), ics) != NULL)
     {
 
-    
-        char *red = "boundary=";
+        return NULL;
+    }
 
-        if (!strstr(lineq, red))
+    while (fgets(line, sizeof(line), ics) != NULL)
+    {
+
+        printf("line :  |||%s|||\n", line);
+
+        if (strstr(line, "boundary=") && strstr(line, "Content-Type:"))
         {
-            istr = strstr(lineq, red);
-        }
+            char *start_boundary = strstr(line, "boundary=");
 
+            char *boudary_begin = start_boundary + 9;
+            if (boudary_begin[0] == '"')
+            {
 
-        if (istr != NULL)
-        {
+                boudary_begin++;
+            }
+            char *boudary_end = strchr(boudary_begin, '"');
+            boudary_end[0] = '\n';
+            boundary_final = strndup(boudary_begin, boudary_end - boudary_begin+1);
+            printf("boundaty_begin :  |||%s|||\n", boudary_begin);
+            printf("boundaty_end:  |||%s|||\n", boudary_end);
 
-            printf("istr   %s\n", istr);
-          
-            fclose(ics);
+            printf("boundary final :  |||%s|||\n", boundary_final);
 
-            //  с кавычками и без)
            
-            printf("istr   %s", istr);
-            char *boudary_value = istr + 9;
-            printf("boudary_value   %s", boudary_value);
-            if (boudary_value[0] == '"')
-            {
-              
-                boudary_value_begin = istr + 10;
                
-                boudary_value_end = strchr(boudary_value_begin, '"');
-                printf("11\n");
-            }
-            else
-            {
-                boudary_value_begin = istr + 9;
-                boudary_value_end = strchr(boudary_value_begin, '\n');
-            }
-
-            int a = boudary_value_end - boudary_value_begin + 1;
-            char *asd = strndup(boudary_value_begin, a);
-
-            printf("a = %d\n", a);
-
-            printf(" итоговая строка  до  |||%s|||\n", asd);
-
-            asd[a - 1] = '\n';
-
-            printf("eto aa : %d\n", a);
-
-            printf("boudary_value_beigin  |||%s|||\n", boudary_value_begin);
-
-            printf("boudary_value_end  |||%s|||\n", boudary_value_end);
-
-            printf(" итоговая строка   |||%s|||\n", asd);
-
-            printf("boudary_value  |||%s|||\n", boudary_value);
-
-            printf("aaaa %s\n", asd);
-            string = asd;
-        } else {
-            string = NULL;
+                 
+            
         }
     }
-    
-    return string;
+
+    return boundary_final;
 }
