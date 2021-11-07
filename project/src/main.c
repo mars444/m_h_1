@@ -1,6 +1,6 @@
-#include <stdlib.h>
-#include <string.h>
 #include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
 
 #include "1.c"
 
@@ -19,30 +19,21 @@ int main(void)
     abcd = calloc(1, sizeof(eml_t));
     int a = 0, b = 0, c = 0;
     FILE *ics;
-    char filename[20], line[150];
+    char line[300];
     int i = 0;
 
-    printf("Please enter your group:  ");
-    scanf("%19s", filename);
-    strcat(filename, ".ics");
-    ics = fopen(filename, "r");
-    if (ics == NULL){
-        printf("11\n");
+    ics = fopen("1.ics", "r");
+    if (ics == NULL)
+    {
         free(abcd);
- return -1;
+        return -1;
     }
-       
 
-printf("2\n");
+    printf("2\n");
     char *red = "12345";
     printf("2\n");
     red = search();
-    if (red) {
-      
-    printf("перед цмклом|||%s|||\n\n", red);
-    }
 
-    
     while (fgets(line, sizeof(line), ics) != NULL)
     {
         char *separator;
@@ -50,16 +41,17 @@ printf("2\n");
         char *tail;
         char *value;
 
-       if(red) {
-           if (!strstr(line, "boundary") && strstr(line, red))
+        if (red != NULL)
+        {
+            if (!strstr(line, "boundary") && strstr(line, red))
             {
                 i++;
             }
-       } else {
-           i=1;
-       }
-            
-        
+        }
+        else
+        {
+            i = 1;
+        }
 
         if ((tail = strchr(line, '\n')) != NULL)
         {
@@ -72,7 +64,7 @@ printf("2\n");
         key = line;
         value = separator + 2;
 
-        if (a == 0 )
+        if (a == 0)
         {
             if (!strcmp(key, "From"))
             {
@@ -104,11 +96,12 @@ printf("2\n");
         }
         count_lines++;
     }
+
     abcd->eml_parts = i;
 
     fclose(ics);
 
     printf("%s | %s | %s | %d\n", abcd->eml_from, abcd->eml_to, abcd->eml_date, abcd->eml_parts);
+    free(abcd);
     return 0;
 }
-
