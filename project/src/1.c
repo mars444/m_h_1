@@ -102,5 +102,6 @@ char *search(void)
             string = NULL;
         }
     }
+    
     return string;
 }
