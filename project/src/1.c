@@ -10,7 +10,6 @@ char* search(void)
     char *string;
     FILE *ics;
     char  lineq[150];
-    int i = 0;
 
     ics = fopen("1.ics", "r");
     if (ics == NULL)
@@ -70,12 +69,13 @@ printf(" итоговая строка   |||%s|||\n",asd);
 printf("boudary_value  |||%s|||\n", boudary_value);
 
 string = asd;
-    return string;
+   
 
             }
 
       
 }
+ return string;
 }
 
 

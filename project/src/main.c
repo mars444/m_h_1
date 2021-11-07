@@ -23,11 +23,12 @@ int main(void)
     int i = 0;
 
     printf("Please enter your group:  ");
-    scanf("%s", filename);
+    scanf("%19s", filename);
     strcat(filename, ".ics");
     ics = fopen(filename, "r");
     if (ics == NULL){
         printf("11\n");
+        free(abcd);
  return -1;
     }
        
@@ -36,8 +37,12 @@ printf("2\n");
     char *red = "12345";
     printf("2\n");
     red = search();
-
+    if (red) {
+      
     printf("перед цмклом|||%s|||\n\n", red);
+    }
+
+    
     while (fgets(line, sizeof(line), ics) != NULL)
     {
         char *separator;
@@ -45,7 +50,7 @@ printf("2\n");
         char *tail;
         char *value;
 
-       if(red != NULL) {
+       if(red) {
            if (!strstr(line, "boundary") && strstr(line, red))
             {
                 i++;
