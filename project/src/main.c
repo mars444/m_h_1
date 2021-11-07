@@ -14,18 +14,12 @@ typedef struct
     char *to;
 } eml_t;
 
-typedef struct
-{
-    char *from;
-} temp_t;
-
 int main(void)
 {
     int count_lines = 0;
     eml_t *abcd;
-    temp_t *vrem;
-    abcd = calloc(1, sizeof(eml_t));
-    vrem = calloc(1, sizeof(temp_t));
+    abcd = calloc(1000000, sizeof(eml_t));
+   
     int a = 0, b = 0, c = 0;
     FILE *ics;
     char line[300];
@@ -64,6 +58,12 @@ int main(void)
                 strstr(line, "Received:"))
             {
 
+
+                if (abcd->from)
+            {
+                
+                abcd->from[strlen(abcd->from)-1] = '\0';
+            }
                 abcd->eml_from = abcd->from;
 
                 abcd->from = NULL;
@@ -71,7 +71,7 @@ int main(void)
             if (abcd->from)
             {
                 abcd->from = strcat(abcd->from, line);
-                abcd->from[strlen(abcd->from) - 1] = '\0';
+                abcd->from[strlen(abcd->from)-1] = ' ';
             }
         }
 
