@@ -2,37 +2,22 @@
 #include <string.h>
 #include <stdlib.h>
 
-#include "1.c"
+char *keys_arr[50];
 
-typedef struct
+char** arr_keys(void)
 {
-    char *eml_from;
-    char *eml_to;
-    char *eml_date;
-    int eml_parts;
-} eml_t;
-
-int main(void)
-{
-
-    eml_t *abcd;
-    abcd = calloc(1, sizeof(eml_t));
 
     FILE *ics;
     char line[300];
-
-    char *keys_arr[50];
+    
+    
 
     ics = fopen("1.ics", "r");
     if (ics == NULL)
     {
-        free(abcd);
-        return -1;
+        return NULL;
     }
 
-    char *red;
-
-    red = search();
     int i = 0;
 
     while (fgets(line, sizeof(line), ics) != NULL)
@@ -42,7 +27,7 @@ int main(void)
         char *tail;
         char *separator;
 
-        if (line[0] == ' ')
+        if (line[0] == '\t' || line[0] == ' ' )
         {
             continue;
         }
@@ -50,7 +35,7 @@ int main(void)
         {
             break;
         }
-        else
+        else 
         {
 
             if ((tail = strchr(line, '\n')) != NULL)
@@ -65,9 +50,11 @@ int main(void)
             key = line;
 
             char *a = strndup(key, strlen(key));
+            strcat(a,":");
 
             keys_arr[i] = a;
-
+            
+            printf ("keys arr ==  %s\n", keys_arr[i]);
           
         }
 
@@ -76,11 +63,6 @@ int main(void)
         i++;
     }
 
-    for (size_t i = 0; i < 10; i++)
-    {
-         printf ("keys arr ==  %s\n", keys_arr[i]);
-    }
-    
-
-    return 0;
+   fclose(ics);
+    return keys_arr;
 }

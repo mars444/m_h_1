@@ -6,7 +6,6 @@ char *search(void)
 {
     
     FILE *ics;
-    char line[300];
     int i = 0;
 
     char *boundary_final;
@@ -18,12 +17,11 @@ char *search(void)
         return NULL;
     }
 
-    while (fgets(line, sizeof(line), ics) != NULL)
-    {
+   
 
-        printf("line :  |||%s|||\n", line);
+       char * line = content_type_search();
 
-        if (strstr(line, "boundary=") && strstr(line, "Content-Type:"))
+        if (strstr(line, "boundary="))
         {
             char *start_boundary = strstr(line, "boundary=");
 
@@ -45,7 +43,7 @@ char *search(void)
                
                  
             
-        }
+        
     }
 
     return boundary_final;
