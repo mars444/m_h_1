@@ -1,29 +1,12 @@
 Subject: 2 RCPT MIME
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
 From: bob <bob@example.com>
+
 xxx@example.net, yyy@example.net To:
 xxx@example.net, yyy@example.net
 xxx@example.net, yyy@example.net
-xxx@example.net, yyy@example.net
-xxx@example.net, yyy@example.net
-xxx@example.net, yyy@example.net
-xxx@example.net, yyy@example.net 
-xxx@example.net, yyy@example.net
-xxx@example.net, yyy@example.net
-xxx@example.net, yyy@example.net
-xxx@example.net, yyy@example.net
-xxx@example.net, yyy@example.net
-xxx@example.net, yyy@example.net
-xxx@example.net, yyy@example.net
-xxx@example.net, yyy@example.net
-xxx@example.net, yyy@example.net
-xxx@example.net, yyy@example.net
-xxx@example.net, yyy@example.net
-xxx@example.net, yyy@example.net
-xxx@example.net, yyy@example.net
-xxx@example.net, yyy@example.net
-xxx@example.net, yyy@example.net
-xxx@example.net, yyy@example.net
-xxx@example.net, yyy@example.net
+
 
 To: xxx@example.net, yyy@example.net
 xxx@example.net, yyy@example.net

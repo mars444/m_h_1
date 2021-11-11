@@ -14,7 +14,7 @@ int main()
   char *date = "Date:";
   char *content = "Content-Type:";
 
-  char *fromt = to_search(from);
+  char *fromt = to_search(to);
   printf("From: |||%s|||\n", fromt);
 
 

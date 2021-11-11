@@ -45,7 +45,12 @@ char *to_search(char *key) {
         if (mail->from) {
             for (size_t i = 0; arr[i] != NULL; i++) {
 
-                if ((line[0] == '\n' || (strstr(line, arr[i]) && (line[0]==key[0]) && (line[1]==key[1])) )) {
+                if (
+                    (strstr(line, arr[i]) ||
+                    (line[0] == '\n' &&
+                    line[0]==key[0]) &&
+                    line[1]==key[1])) {
+                        
                     k = 5;
                 }
             }
