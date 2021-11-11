@@ -2,18 +2,21 @@
 #include <string.h>
 #include <stdlib.h>
 
-#include "keys_writing.c"
-#include "content_type_search.c"
+#include "to_searchqqq.c"
+#include "parts_count.c"
+#include "boun_search.c"
 
-int main(void)
+
+int main()
 {
-    char* abc = content_type_search();
+  char *to = "To:";
+  char *from = "From:";
+  char *date = "Date:";
+  char *content = "Content-Type:";
 
-   
+  char *fromt = to_search(from);
+  printf("From: |||%s|||\n", fromt);
 
-    printf("wau-->>|||%s|||\n", abc);
-  
-return 0;
+
+  return 0;
 }
-
-

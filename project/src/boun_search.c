@@ -4,25 +4,24 @@
 #include <string.h>
 #include <stdlib.h>
 
-#include "content_type_search.c"
 
-char *boun_search(void)
+char *boun_search(char *key)
 {
-    char *content = content_type_search();
-    printf("content-->|||%s|||\n", content);
+    
+  
 
     char *boun;
 
-    if (strstr(content, "boundary=\""))
+    if (strstr(key, "boundary=\""))
     {
-        char *y = strstr(content, "boundary=\"");
+        char *y = strstr(key, "boundary=\"");
 
         boun = y + 8;
     }
-    else if (strstr(content, "boundary="))
+    else if (strstr(key, "boundary="))
     {
 
-        char *x = strstr(content, "boundary=");
+        char *x = strstr(key, "boundary=");
         boun = x + 7;
     }
     else
@@ -42,7 +41,7 @@ char *boun_search(void)
         boun[strlen(boun)] = '\n';
     }
 
-    printf("start-->%s\n", boun);
+   
 
     return boun;
 }
