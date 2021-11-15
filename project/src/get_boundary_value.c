@@ -13,7 +13,7 @@ char *get_boundary_value(char *key) {
         char *y = strstr(key, BOUNDARY);
 
         boun = y + 8;
-         if (y[0] = '"') {
+         if ((y[0] = '"')) {
 
             y++;
         }

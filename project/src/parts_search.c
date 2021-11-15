@@ -12,6 +12,9 @@
 
 int parts_search(char * line, char *boundary) {
 
+if (line == NULL || boundary == NULL){
+    return 1;
+}
 int parts = 0;
 char *boun_begin;
 

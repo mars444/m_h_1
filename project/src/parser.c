@@ -50,14 +50,19 @@ if (strstr(line,target)) {
         from_end_itog = from_end;
         from_end = nextline_end;
 
-        if(nextline_start[0] == '\n' || nextline_start[0] == '\r') {
+        if(nextline_start[0] == '\n') {
             break;
         }
         
     }
 
-    mail_from = strndup(from_begin, from_end_itog - from_begin);
+    if(go_line[0] == '\t' || go_line[0] == ' '){
 
+        mail_from = strndup(from_begin, from_end - from_begin);
+    } else {
+
+        mail_from = strndup(from_begin, from_end_itog - from_begin);
+    }
 
    
 
