@@ -35,7 +35,7 @@ int main() {
 
   int parts = parts_search(one_line, boundary);
 
-    printf("%d\n",parts);
+  printf("%d\n",parts);
 
   free_eml_t(content);
 

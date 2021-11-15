@@ -40,8 +40,18 @@ if (strstr(line,target)) {
          char *nextline_start; 
 
         nextline_start = from_end + 1;
+
+    
         nextline_end = strchr(nextline_start, '\n');
         go_line = strndup(nextline_start, nextline_end - nextline_start);
+
+        printf("go_line-->|||%s|||\n", go_line);
+
+        
+        
+           
+      
+        printf("go_line-->|||%s|||\n", go_line);
         from_end_itog = from_end;
         from_end = nextline_end;
 
@@ -79,6 +89,8 @@ if (strstr(line,target)) {
 
 }
         for(int i=0;mail->mail_target[i]!='\0';i++) {
+
+
             if(mail->mail_target[i]== '\n') {
             mail->mail_target[i] = ' ';
             }
@@ -86,6 +98,30 @@ if (strstr(line,target)) {
         }
 
  
- return mail;
+           
+       
+
+
+        for (int i = 0; i < strlen(mail->mail_target); i++)
+    {
+        char a,b;
+        a = mail->mail_target[i];
+        b = mail->mail_target[i+1];
+        if (a == ' ' && b == ' ')
+        {
+            if (mail->mail_target[i + 1] == '\0')
+                mail->mail_target[i] = '\0';
+            else
+            {               
+                size_t s = strlen(mail->mail_target + i + 1);
+                memmove(mail->mail_target + i, mail->mail_target + i + 1, s+1);
+
+                --i;
+            }
+        }
+    }
+    
+
+    return mail;
 }
 
