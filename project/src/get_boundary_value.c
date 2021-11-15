@@ -1,8 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-
-
+#include "../include/parser.h"
 char *get_boundary_value(char *key) {
     
   
@@ -12,10 +11,10 @@ char *get_boundary_value(char *key) {
     if (strstr(key, BOUNDARY)) {
         char *y = strstr(key, BOUNDARY);
 
-        boun = y + 8;
+        boun = y + 7;
          if ((y[0] = '"')) {
 
-            y++;
+            boun++;
         }
     }
    

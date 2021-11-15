@@ -1,27 +1,15 @@
-#define _GNU_SOURCE  
-#include "../include/parser.h"      
-#include <string.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdlib.h>
-#include <string.h>
-#include <ctype.h>
-#include <stdbool.h>
+#include "../include/parser.h"
 
 
-#define FROM    "\nFrom:"
-#define TO      "\nTo:"
-#define DATE    "\nDate:"
+eml_t* parser(char * line, char *target) {
 
-#define CONTENT_TYPE        "\nContent-Type:"
-#define BOUNDARY            "boundary="
+eml_t *mail = calloc(sizeof(eml_t), 1);
+
+mail->mail_target = calloc(sizeof(char), 1);
 
 
 
-char* parser(char * line, char *target) {
-
-char *mail_from;
-
+    
 if (strstr(line,target)) {
 
     char* from_begin = strstr(line,target);
@@ -29,20 +17,27 @@ if (strstr(line,target)) {
 
     from_begin = from_begin + strlen(target);
 
+    
+
     while(from_begin[0] == ' ') {
         from_begin++;
     }
 
     char *go_line = "";
-    char *from_end; 
-    char *nextline_start; 
+    char *from_end ; 
+   
 
     char *nextline_end;
+    char *finish_value;
+    char *from_end_itog = "";
 
-    char *from_end_itog;
+
+
     from_end = strchr(from_begin, '\n');
 
     while(!strstr(go_line, ":")) {
+
+         char *nextline_start; 
 
         nextline_start = from_end + 1;
         nextline_end = strchr(nextline_start, '\n');
@@ -56,25 +51,41 @@ if (strstr(line,target)) {
         
     }
 
+    
+
     if(go_line[0] == '\t' || go_line[0] == ' '){
 
-        mail_from = strndup(from_begin, from_end - from_begin);
+         finish_value = strndup(from_begin, from_end - from_begin);
+         if(finish_value ==NULL){
+             free(mail);
+             free(finish_value);
+             return NULL;
+         }
     } else {
 
-        mail_from = strndup(from_begin, from_end_itog - from_begin);
-    }
+        finish_value = strndup(from_begin, from_end_itog - from_begin);
 
-   
+          if(finish_value ==NULL){
+            
+             free(mail);
+             free(finish_value);
+             return NULL;
+         }
+    }
+    
+
+   mail->mail_target = finish_value;
+
 
 }
-        for(int i=0;mail_from[i]!='\0';i++) {
-            if(mail_from[i]== '\n') {
-            mail_from[i] = ' ';
+        for(int i=0;mail->mail_target[i]!='\0';i++) {
+            if(mail->mail_target[i]== '\n') {
+            mail->mail_target[i] = ' ';
             }
   
         }
-    
 
- return mail_from;
+ 
+ return mail;
 }
 

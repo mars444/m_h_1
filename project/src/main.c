@@ -6,6 +6,7 @@
 #include "parser.c"
 #include "get_boundary_value.c"
 #include "parts_search.c"
+#include "free_eml_t.c"
 
 int main() {
 
@@ -13,17 +14,32 @@ int main() {
 
   char* one_line = get_line(path_to_eml);
 
-  char* from = parser(one_line, FROM);
-  char* to = parser(one_line, TO);
-  char* date = parser(one_line, DATE);
-  char* content = parser(one_line, CONTENT_TYPE);
+  eml_t* from = parser(one_line, FROM);
+  printf("%s|",from->mail_target);
+  free_eml_t(from);
 
-  char *boundary = get_boundary_value(content);
+  eml_t* to = parser(one_line, TO);
+  printf("%s|",to->mail_target);
+  free_eml_t(to);
 
-  int parts = parts_search(one_line,boundary);
+  eml_t* date = parser(one_line, DATE);
+  printf("%s|",date->mail_target);
+  free_eml_t(date);
+
+  eml_t* content = parser(one_line, CONTENT_TYPE);
+ 
+
+  char *boundary = get_boundary_value(content->mail_target);
 
 
-  printf("%s|%s|%s|%d\n",from, to, date, parts);
+
+  int parts = parts_search(one_line, boundary);
+
+    printf("%d\n",parts);
+
+  free_eml_t(content);
+
+ 
 
   
 
