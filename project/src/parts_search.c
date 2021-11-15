@@ -13,16 +13,16 @@
 int parts_search(char * line, char *boundary) {
 
 int parts = 0;
+char *boun_begin;
 
-if(!strstr(line, "multipart")) {
-    parts = 1;
-}
-
-while(strstr(line, boundary)){
-
-    parts++;
-
-}
+while (1) {
+        boun_begin=strstr(line,boundary);
+        if (boun_begin==NULL) {
+            break;
+        } 
+        parts++;
+        line=boun_begin+1;
+    }
 
    
 

@@ -19,14 +19,15 @@ int main() {
   char* content = parser(one_line, CONTENT_TYPE);
 
 
-  printf("From-->|||%s|||\nto-->|||%s|||\nDate-->|||%s|||\nContent-->|||%s|||\n"
-  
-  ,from, to, date, content);
+  printf("From-->|||%s|||\nto-->|||%s|||\nDate-->|||%s|||\nContent-->|||%s|||\n",from, to, date, content);
 
   char *boundary = get_boundary_value(content);
 
   printf("Boundary-->|||%s|||\n" ,boundary);
 
+  int parts = parts_search(one_line,boundary);
+
+printf("Parts-->|||%d|||\n" ,parts);
 
 
   return 0;
