@@ -57,7 +57,7 @@ if (strstr(line,target)) {
     }
 
     
-
+    // если строка начинается  с табами или пробелом
     if(go_line[0] == '\t' || go_line[0] == ' '){
 
          finish_value = strndup(from_begin, from_end - from_begin);
