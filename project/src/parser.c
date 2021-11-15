@@ -18,15 +18,7 @@
 
 
 
-    int get_cnt_space(char *beg) {
-    int k = 0;
-    while (isspace(*beg++)) {
-        k++;
-    }
-    return k;
-}
-
-eml_t* parser(char * line, char *target) {
+char* parser(char * line, char *target) {
 
 char *mail_from;
 
@@ -57,12 +49,11 @@ if (strstr(line,target)) {
         go_line = strndup(nextline_start, nextline_end - nextline_start);
         from_end_itog = from_end;
         from_end = nextline_end;
+
         if(nextline_start[0] == '\n') {
             break;
         }
         
-   
- 
     }
 
     mail_from = strndup(from_begin, from_end_itog - from_begin);
@@ -70,6 +61,6 @@ if (strstr(line,target)) {
    
     printf("mail_from--->%s\n", mail_from);
 }
-
+ return mail_from;
 }
 
