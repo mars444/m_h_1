@@ -1,18 +1,75 @@
-#include "parser.h"
+#define _GNU_SOURCE  
+#include "../include/parser.h"      
+#include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
+#include <stdbool.h>
 
 
+#define FROM    "\nFrom:"
+#define TO      "\nTo:"
+#define DATE    "\nDate:"
 
-#define FROM    "From:"
-#define TO      "To:"
-#define DATE    "Date:"
-
-#define CONTENT_TYPE        "Content-Type:"
+#define CONTENT_TYPE        "\nContent-Type:"
 #define BOUNDARY            "boundary="
 
 
-eml_t* parser(char * line) {
+
+    int get_cnt_space(char *beg) {
+    int k = 0;
+    while (isspace(*beg++)) {
+        k++;
+    }
+    return k;
+}
+
+eml_t* parser(char * line, char *target) {
+
+char *mail_from;
+
+if (strstr(line,target)) {
+
+    char* from_begin = strstr(line,target);
+    
+
+    from_begin = from_begin + strlen(target);
+
+    while(from_begin[0] == ' ') {
+        from_begin++;
+    }
+
+    char *go_line = "";
+    char *from_end; 
+    char *nextline_start; 
+
+    char *nextline_end;
+
+    char *from_end_itog;
+    from_end = strchr(from_begin, '\n');
+
+    while(!strstr(go_line, ":")) {
+
+        nextline_start = from_end + 1;
+        nextline_end = strchr(nextline_start, '\n');
+        go_line = strndup(nextline_start, nextline_end - nextline_start);
+        from_end_itog = from_end;
+        from_end = nextline_end;
+        if(nextline_start[0] == '\n') {
+            break;
+        }
+        
+   
+ 
+    }
+
+    mail_from = strndup(from_begin, from_end_itog - from_begin);
+
+   
+    printf("mail_from--->%s\n", mail_from);
+}
 
 }
+
