@@ -3,6 +3,11 @@ VALGRIND_LOG = "valgrind.log"
 
 SRCS = \
 	   project/src/main.c \
+	   project/src/free_eml_t.c \
+	   project/src/get_boundary_value.c \
+	   project/src/get_line.c \
+	   project/src/parser.c \
+	   project/src/parts_search.c
 
 .PHONY: all check build test memtest rebuild clean
 

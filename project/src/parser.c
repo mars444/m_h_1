@@ -1,6 +1,8 @@
 #include "../include/parser.h"
 
 
+
+
 eml_t* parser(char * line, char *target) {
 
 eml_t *mail = calloc(sizeof(eml_t), 1);
@@ -45,13 +47,6 @@ if (strstr(line,target)) {
         nextline_end = strchr(nextline_start, '\n');
         go_line = strndup(nextline_start, nextline_end - nextline_start);
 
-        printf("go_line-->|||%s|||\n", go_line);
-
-        
-        
-           
-      
-        printf("go_line-->|||%s|||\n", go_line);
         from_end_itog = from_end;
         from_end = nextline_end;
 
@@ -87,7 +82,12 @@ if (strstr(line,target)) {
    mail->mail_target = finish_value;
 
 
+} else {
+ mail->mail_target = NULL;
+
 }
+        // замена переводов строки на пробел
+
         for(int i=0;mail->mail_target[i]!='\0';i++) {
 
 
@@ -100,26 +100,27 @@ if (strstr(line,target)) {
  
            
        
+        // замена нескольких пробелов на 1
 
+        for (size_t i = 0; i < strlen(mail->mail_target); i++) {
 
-        for (int i = 0; i < strlen(mail->mail_target); i++)
-    {
-        char a,b;
-        a = mail->mail_target[i];
-        b = mail->mail_target[i+1];
-        if (a == ' ' && b == ' ')
-        {
-            if (mail->mail_target[i + 1] == '\0')
-                mail->mail_target[i] = '\0';
-            else
-            {               
-                size_t s = strlen(mail->mail_target + i + 1);
-                memmove(mail->mail_target + i, mail->mail_target + i + 1, s+1);
+            char a,b;
+            a = mail->mail_target[i];
+            b = mail->mail_target[i+1];
 
-                --i;
+            if (a == ' ' && b == ' ') {
+
+                if (mail->mail_target[i + 1] == '\0'){
+
+                    mail->mail_target[i] = '\0';
+                    
+                } else {               
+                    size_t s = strlen(mail->mail_target + i + 1);
+                    memmove(mail->mail_target + i, mail->mail_target + i + 1, s+1);
+                    --i;
+                }
             }
         }
-    }
     
 
     return mail;

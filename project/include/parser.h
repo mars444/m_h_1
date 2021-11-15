@@ -22,4 +22,6 @@ typedef struct {
     char *mail_target;
 } eml_t;
 
+eml_t* parser(char * line, char *target);
+
 

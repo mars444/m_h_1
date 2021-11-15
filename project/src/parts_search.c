@@ -1,12 +1,9 @@
-#include "../include/parser.h"      
+#include "../include/parser.h"    
+#include "../include/parts_search.h" 
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdlib.h>
-#include <string.h>
 #include <ctype.h>
-#include <stdbool.h>
-
 
 
 
