@@ -62,14 +62,12 @@ if (strstr(line,target)) {
    
 
 }
-
-
-                int i = 0;
-
-                while (mail_from[i] == '\n') {
-                   mail_from[i] == ' ';
-                    i++;
-                }
+        for(int i=0;mail_from[i]!='\0';i++) {
+            if(mail_from[i]== '\n') {
+            mail_from[i] = ' ';
+            }
+  
+        }
     
 
  return mail_from;

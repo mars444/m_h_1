@@ -23,7 +23,6 @@ int main() {
 
   char *boundary = get_boundary_value(content);
 
-  printf("Boundary-->|||%s|||\n" ,boundary);
 
   int parts = parts_search(one_line,boundary);
 
