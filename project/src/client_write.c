@@ -1,7 +1,8 @@
 #include "main.h"
-#include "master_write.h"
+#include "client_write.h"
 #include "write_to_file_from_flow.h"
-void master_write(FILE *ofPTR, Data Client, int b) {
+
+void client_write(FILE *out, client Client, int stop_write) {
     printf("%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n\n",
            "1 Number account: ",
            "2 Client name: ",
@@ -11,10 +12,8 @@ void master_write(FILE *ofPTR, Data Client, int b) {
            "6 Client indebtedness: ",
            "7 Client credit limit: ",
            "8 Client cash payments: ");
-
-     while ( b != -1 ) {
-         b = write_to_file_from_flow(ofPTR, Client);
-
+     while ( stop_write != -1 ) {
+    stop_write = write_to_file_from_flow(out, Client);
           printf("%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n\n",
                "1 Number account: ",
                "2 Client name: ",

@@ -1,30 +1,39 @@
 #include "main.h"
 #include "black_record.h"
 // black_record слепая запись
-    void black_record(FILE *ofPTR, FILE *ofPTR_2, FILE *blackrecord, Data client_data, Data transfer) {
-        while ( fscanf(ofPTR, "%d%20s%20s%30s%15s%lf%lf%lf",
-                  &client_data.Number,
-                  client_data.Name,
-                  client_data.Surname,
-                  client_data.addres,    // пока не встретил EOF (cntl + D)
-                  client_data.TelNumber,
-                  &client_data.indebtedness,
-                  &client_data.credit_limit,
-                  &client_data.cash_payments) != -1 ) {
-        while ( fscanf(ofPTR_2, "%d %lf", &transfer.Number, &transfer.cash_payments) != -1 ) {
-            if (client_data.Number == transfer.Number && transfer.cash_payments != 0) {
-                client_data.credit_limit += transfer.cash_payments;
+    void black_record(
+        FILE *read_client_values,
+        FILE *read_transfer_values,
+        FILE *from_write,
+        client client_data,
+        client transfer) {
+        while (
+
+            fscanf(read_client_values, "%d%20s%20s%30s%15s%lf%lf%lf",
+                  &client_data.client_number,
+                  client_data.client_name,
+                  client_data.client_surname,
+                  client_data.client_addres,    // пока не встретил EOF (cntl + D)
+                  client_data.client_tel_number,
+                  &client_data.client_indebtedness,
+                  &client_data.client_credit_limit,
+                  &client_data.client_cash_payments) != -1 ) {
+        while ( fscanf(read_transfer_values, "%d %lf",
+                        &transfer.client_number,
+                        &transfer.client_cash_payments) != -1 ) {
+            if ( client_data.client_number == transfer.client_number && transfer.client_cash_payments != 0 ) {
+                client_data.client_credit_limit += transfer.client_cash_payments;
             }
         }
-        fprintf(blackrecord, "%-12d%-11s%-11s%-16s%20s%12.2f%12.2f%12.2f\n",
-                client_data.Number,
-                client_data.Name,
-                client_data.Surname,
-                client_data.addres,   //  запись в  blackrecord
-                client_data.TelNumber,
-                client_data.indebtedness,
-                client_data.credit_limit,
-                client_data.cash_payments);
-        rewind(ofPTR_2);
+        fprintf(from_write, "%-12d%-11s%-11s%-16s%20s%12.2f%12.2f%12.2f\n",
+                client_data.client_number,
+                client_data.client_name,
+                client_data.client_surname,
+                client_data.client_addres,   //  запись в  blackrecord
+                client_data.client_tel_number,
+                client_data.client_indebtedness,
+                client_data.client_credit_limit,
+                client_data.client_cash_payments);
+        rewind(read_transfer_values);
     }
 }
