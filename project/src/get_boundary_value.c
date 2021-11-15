@@ -3,42 +3,38 @@
 #include <stdlib.h>
 
 
-char *get_boundary_value(char *key)
-{
+char *get_boundary_value(char *key) {
     
   
 
     char *boun;
 
-    if (strstr(key, "boundary=\""))
-    {
-        char *y = strstr(key, "boundary=\"");
+    if (strstr(key, BOUNDARY)) {
+        char *y = strstr(key, BOUNDARY);
 
         boun = y + 8;
-    }
-    else if (strstr(key, "boundary="))
-    {
+         if (y[0] = '"') {
 
-        char *x = strstr(key, "boundary=");
-        boun = x + 7;
+            y++;
+        }
     }
-    else
-    {
+   
+    
+    else {
 
         return NULL;
     }
+
     boun[0] = '-';
     boun[1] = '-';
 
-    if (boun[strlen(boun) - 1] == '"')
-    {
+    if (boun[strlen(boun) - 1] == '"') {
+
         boun[strlen(boun) - 1] = '\n';
-    }
-    else
-    {
+
+    } else {
         boun[strlen(boun)] = '\n';
     }
 
-    printf("boundary-->>%s\n", boun);
     return boun;
 }

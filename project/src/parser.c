@@ -50,7 +50,7 @@ if (strstr(line,target)) {
         from_end_itog = from_end;
         from_end = nextline_end;
 
-        if(nextline_start[0] == '\n') {
+        if(nextline_start[0] == '\n' || nextline_start[0] == '\r') {
             break;
         }
         
@@ -58,9 +58,20 @@ if (strstr(line,target)) {
 
     mail_from = strndup(from_begin, from_end_itog - from_begin);
 
+
    
-    printf("mail_from--->%s\n", mail_from);
+
 }
+
+
+                int i = 0;
+
+                while (mail_from[i] == '\n') {
+                   mail_from[i] == ' ';
+                    i++;
+                }
+    
+
  return mail_from;
 }
 

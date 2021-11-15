@@ -5,16 +5,27 @@
 
 #include "parser.c"
 #include "get_boundary_value.c"
+#include "parts_search.c"
+
 int main() {
 
   const char *path_to_eml = "1.eml";
 
   char* one_line = get_line(path_to_eml);
 
-  char* ger = parser(one_line, CONTENT_TYPE);
+  char* from = parser(one_line, FROM);
+  char* to = parser(one_line, TO);
+  char* date = parser(one_line, DATE);
+  char* content = parser(one_line, CONTENT_TYPE);
 
-  char *aaa = get_boundary_value(ger);
 
+  printf("From-->|||%s|||\nto-->|||%s|||\nDate-->|||%s|||\nContent-->|||%s|||\n"
+  
+  ,from, to, date, content);
+
+  char *boundary = get_boundary_value(content);
+
+  printf("Boundary-->|||%s|||\n" ,boundary);
 
 
 
