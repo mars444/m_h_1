@@ -14,7 +14,7 @@
 
 client client_data;
 client transfer;
-FILE *Ptr, *Ptr_2, *blackrecord;
+FILE *client_values, *transfer_values, *from_write;
 
 void function_cases(void) {
 int choice = 0;
@@ -24,45 +24,45 @@ int choice = 0;
     while ( scanf("%d", &choice) != -1 ) {
         switch (choice) {
             case WRITE_ABOUT_CLIENT:
-                Ptr = fopen(RECORD_PATH, "r+");
+                client_values = fopen(RECORD_PATH, "r+");
 
-                if ( Ptr == NULL ) {
+                if ( client_values == NULL ) {
                     puts("Not acess");
                 } else {
                     int ex = 0;
-                    client_write(Ptr, client_data, ex);
-                    fclose(Ptr);
+                    client_write(client_values, client_data, ex);
+                    fclose(client_values);
                 }
                 break;
 
             case WRITE_TRANSACTION:
-                Ptr = fopen(TRANSACTION_PATH, "r+");
+                transfer_values = fopen(TRANSACTION_PATH, "r+");
 
-                if ( Ptr == NULL ) {
-                    fclose(Ptr);
+                if ( transfer_values == NULL ) {
+                    fclose(transfer_values);
                     puts("Not acess");
                 } else {
-                    transaction_write(Ptr, transfer);
-                    fclose(Ptr);
+                    transaction_write(transfer_values, transfer);
+                    fclose(transfer_values);
                 }
                 break;
 
             case REWRITE_CLIENT_CREDITLIMIT:
-                Ptr = fopen(RECORD_PATH, "r");
-                Ptr_2 = fopen(TRANSACTION_PATH, "r");
-                blackrecord = fopen(BLACKRECORD_PATH, "w");
+                client_values = fopen(RECORD_PATH, "r");
+                transfer_values = fopen(TRANSACTION_PATH, "r");
+                from_write = fopen(BLACKRECORD_PATH, "w");
 
-                if ( Ptr == NULL || Ptr_2 == NULL || blackrecord == NULL ) {
-                    fclose(Ptr);
-                    fclose(Ptr_2);
-                    fclose(blackrecord);
+                if ( client_values == NULL || transfer_values == NULL || from_write == NULL ) {
+                    fclose(client_values);
+                    fclose(transfer_values);
+                    fclose(from_write);
                     puts("exit");
 
                 } else {
-                    black_record(Ptr, Ptr_2, blackrecord, client_data, transfer);
-                    fclose(Ptr);
-                    fclose(Ptr_2);
-                    fclose(blackrecord);
+                    black_record(client_values, transfer_values, from_write, client_data, transfer);
+                    fclose(client_values);
+                    fclose(transfer_values);
+                    fclose(from_write);
                 }
                 break;
 
