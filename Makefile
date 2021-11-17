@@ -9,7 +9,8 @@ SRCS = project/src/main.c \
 	   project/src/read_from_file_test.c \
 	   project/src/function_cases.c \
 	   project/src/my_test.c \
-	   project/src/write_to_file_from_flow.c
+	   project/src/write_to_file_from_flow.c \
+	   project/src/print_client_fields.c
 
 .PHONY: all build rebuild check test memtest clean
 

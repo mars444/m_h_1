@@ -3,6 +3,8 @@
 
 int main(void) {
     function_cases();
+
     my_test();
+
     return 0;
 }

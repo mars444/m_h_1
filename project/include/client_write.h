@@ -2,4 +2,4 @@
 
 #include "main.h"
 
-void client_write(FILE *out, client Client, int stop_write);
+void client_write(FILE *out, client client, int stop_write);
