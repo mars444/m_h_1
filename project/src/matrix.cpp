@@ -16,12 +16,12 @@ Matrix::Matrix(size_t rows, size_t cols)
     matrix_arr(rows, std::vector<double> (cols)) {}
 
 Matrix::Matrix(std::istream& is) {
+    is >> matrix_rows;
+    is >> matrix_cols;
+
     if (!is) {
         throw InvalidMatrixStream();
     }
-
-    is >> matrix_rows;
-    is >> matrix_cols;
 
     if (matrix_rows < 1 || matrix_cols < 1 ) {
         throw InvalidMatrixStream();
@@ -29,17 +29,17 @@ Matrix::Matrix(std::istream& is) {
 
     matrix_arr.resize(matrix_rows);
 
-        for (auto& rows : matrix_arr) {
-            rows.resize(matrix_cols);
+    for (auto& rows : matrix_arr) {
+        rows.resize(matrix_cols);
 
-            for (auto& target : rows) {
-                is >> target;
+        for (auto& target : rows) {
+             is >> target;
 
-                if (!is) {
-                    throw InvalidMatrixStream();
-                }
+            if (!is) {
+                throw InvalidMatrixStream();
             }
         }
+    }
 }
 
 size_t Matrix::getRows() const {
@@ -51,11 +51,17 @@ size_t Matrix::getCols() const {
 }
 
 double Matrix::operator()(size_t i, size_t j) const {
-    
+    if (i >= matrix_rows || j >= matrix_cols) {
+        throw OutOfRange(i, j, *this);
+    }
+
     return matrix_arr[i][j];
 }
 
 double& Matrix::operator()(size_t i, size_t j) {
+    if (i >= matrix_rows || j >= matrix_cols) {
+        throw OutOfRange(i, j, *this);
+    }
     return matrix_arr[i][j];
 }
 
