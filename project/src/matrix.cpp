@@ -99,13 +99,35 @@ std::ostream& operator<<(std::ostream& os, const Matrix& matrix) {
 }
 
 Matrix Matrix::operator+(const Matrix& rhs) const {
-   Matrix matrix_sum(rhs.matrix_rows, rhs.matrix_cols);
-   return matrix_sum;
+    if (this->matrix_cols != rhs.matrix_cols || this->matrix_rows != rhs.matrix_rows) {
+        throw DimensionMismatch(rhs);
+    }
+
+    Matrix matrix_sum(this->matrix_rows, this->matrix_cols);
+
+    for (size_t i = 0; i < matrix_sum.matrix_rows; i++) {
+        for (size_t j = 0; j < matrix_sum.matrix_cols; j++) {
+            matrix_sum.matrix_arr[i][j] = this->matrix_arr[i][j] + rhs.matrix_arr[i][j];
+        }
+    }
+    return matrix_sum;
 }
 
 Matrix Matrix::operator-(const Matrix& rhs) const {
-    Matrix matrix_sum(rhs.matrix_rows, rhs.matrix_cols);
-   return matrix_sum;
+    if (this->matrix_cols != rhs.matrix_cols || this->matrix_rows != rhs.matrix_rows) {
+        throw DimensionMismatch(rhs);
+    }
+
+    Matrix matrix_sub(this->matrix_rows, this->matrix_cols);
+
+    for (size_t i = 0; i < matrix_sub.matrix_rows; i++) {
+        for (size_t j = 0; j < matrix_sub.matrix_cols; j++) {
+            matrix_sub.matrix_arr[i][j] = 
+            this->matrix_arr[i][j] - rhs.matrix_arr[i][j];
+        }
+    }
+
+    return matrix_sub;
 }
 
 Matrix Matrix::operator*(const Matrix& rhs) const {
