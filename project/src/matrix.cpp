@@ -1,4 +1,8 @@
 #include <iostream>
+#include <limits>
+#include <cmath>
+#include <iomanip>
+
 
 #include "exceptions.h"
 #include "matrix.h"
@@ -47,6 +51,7 @@ size_t Matrix::getCols() const {
 }
 
 double Matrix::operator()(size_t i, size_t j) const {
+    
     return matrix_arr[i][j];
 }
 
@@ -57,7 +62,19 @@ double& Matrix::operator()(size_t i, size_t j) {
 
 bool Matrix::operator==(const Matrix& rhs) const {
 
-    Matrix matrix_sum(rhs.matrix_rows, rhs.matrix_cols);
+    if (this->matrix_rows != rhs.matrix_rows || this->matrix_cols != rhs.matrix_cols) {
+        return false;
+    }
+
+    for (size_t i = 0; i < this->matrix_rows; i++) {
+        for (size_t j = 0; j < this->matrix_cols; j++) {
+            if (std::fabs(rhs.matrix_arr[i][j] - (this->matrix_arr[i][j]) > 
+            std::numeric_limits<double>::epsilon() * 10e-07)) {
+                return false;
+            }
+        }
+    }
+
     return true;
 
 }
