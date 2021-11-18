@@ -4,7 +4,7 @@
 #include <stdlib.h>
 
 Matrix *create_matrix(size_t rows, size_t cols) {
-    if (cols == 0 || rows == 0) {
+    if (cols < 1 || rows < 1) {
         return NULL;
     }
 

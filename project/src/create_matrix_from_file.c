@@ -30,7 +30,7 @@ Matrix *create_matrix_from_file(const char *path_file) {
         return NULL;
     }
 
-    if (matrix->rows == 0 || matrix->cols == 0) {
+    if (matrix->rows < 1 || matrix->cols < 1) {
         fclose(Ptr);
         free(matrix);
         return NULL;

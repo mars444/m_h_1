@@ -1,7 +1,7 @@
 #include "matrix.h"
 
 Matrix *mul_scalar(const Matrix *matrix, double val) {   //  умножение матрицы на число
-    if (matrix == NULL || matrix->cols == 0 || matrix->rows == 0) {
+    if (matrix == NULL || matrix->cols < 1 || matrix->rows < 1) {
         return NULL;
     }
 

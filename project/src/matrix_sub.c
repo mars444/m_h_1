@@ -4,8 +4,8 @@
 #include <stdlib.h>
 
 Matrix *sub(const Matrix *l, const Matrix *r) {
-    if (l == NULL || r == NULL || l->cols == 0 || l->rows == 0 ||
-        r->cols == 0 || r->rows == 0) {
+    if (l == NULL || r == NULL || l->cols < 1 || l->rows < 1 ||
+        r->cols < 1 || r->rows < 1) {
         return NULL;
     }
 
