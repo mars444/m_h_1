@@ -1,6 +1,8 @@
 #include "matrix.h"
+
 #include <stdio.h>
 #include <stdlib.h>
+
 Matrix *create_matrix_from_file(const char *path_file) {
     if (path_file == NULL) {
         return NULL;

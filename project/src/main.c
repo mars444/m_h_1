@@ -1,5 +1,7 @@
 #include <stdio.h>
+
 #include "matrix.h"
+
 int main(void) {
         char* file_1 = "2.txt";
         char* file_2 = "3.txt";
