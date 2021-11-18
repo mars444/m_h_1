@@ -23,7 +23,7 @@ Matrix::Matrix(std::istream& is) {
         throw InvalidMatrixStream();
     }
 
-    if (matrix_rows < 1 || matrix_cols < 1 ) {
+    if ( matrix_rows < 1 || matrix_cols < 1 ) {
         throw InvalidMatrixStream();
     }
 
@@ -67,14 +67,13 @@ double& Matrix::operator()(size_t i, size_t j) {
 
 
 bool Matrix::operator==(const Matrix& rhs) const {
-
-    if (this->matrix_rows != rhs.matrix_rows || this->matrix_cols != rhs.matrix_cols) {
+    if ( this->matrix_rows != rhs.matrix_rows || this->matrix_cols != rhs.matrix_cols ) {
         return false;
     }
 
     for (size_t i = 0; i < this->matrix_rows; i++) {
         for (size_t j = 0; j < this->matrix_cols; j++) {
-            if (std::fabs(rhs.matrix_arr[i][j] - (this->matrix_arr[i][j]) > 
+            if (std::fabs(rhs.matrix_arr[i][j] - (this->matrix_arr[i][j]) >
             std::numeric_limits<double>::epsilon() * 10e-07)) {
                 return false;
             }
@@ -128,7 +127,7 @@ Matrix Matrix::operator-(const Matrix& rhs) const {
 
     for (size_t i = 0; i < matrix_sub.matrix_rows; i++) {
         for (size_t j = 0; j < matrix_sub.matrix_cols; j++) {
-            matrix_sub.matrix_arr[i][j] = 
+            matrix_sub.matrix_arr[i][j] =
             this->matrix_arr[i][j] - rhs.matrix_arr[i][j];
         }
     }
@@ -184,7 +183,7 @@ Matrix Matrix::operator*(double val) const {
 }
 
 Matrix operator*(double val, const Matrix& matrix) {
-   return matrix * val;
+   return matrix *val;
 }
 
 double Matrix::det() const {
