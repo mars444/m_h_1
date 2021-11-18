@@ -166,8 +166,15 @@ Matrix Matrix::transp() const {
 }
 
 Matrix Matrix::operator*(double val) const {
-  Matrix matrix_transp(this->matrix_cols, this->matrix_rows);
-return matrix_transp * val;
+  Matrix matrix_sub_right(this->matrix_rows, this->matrix_cols);
+
+    for (size_t i = 0; i < matrix_sub_right.matrix_rows; i++) {
+        for (size_t j = 0; j < matrix_sub_right.matrix_cols; j++) {
+            matrix_sub_right.matrix_arr[i][j] = this->matrix_arr[i][j]*val;
+        }
+    }
+
+    return matrix_sub_right;
 }
 
 Matrix operator*(double val, const Matrix& matrix) {
