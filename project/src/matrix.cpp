@@ -6,8 +6,8 @@
 
 namespace prep {
 
-Matrix::Matrix(size_t rows, size_t cols):
-    matrix_rows(rows),
+Matrix::Matrix(size_t rows, size_t cols)
+    :matrix_rows(rows),
     matrix_cols(cols),
     matrix_arr(rows, std::vector<double> (cols)) {
 }
@@ -60,51 +60,58 @@ double& Matrix::operator()(size_t i, size_t j) {
 
 bool Matrix::operator==(const Matrix& rhs) const {
 
+    Matrix matrix_sum(rhs.matrix_rows, rhs.matrix_cols);
+    return true;
 
 }
 
 bool Matrix::operator!=(const Matrix& rhs) const {
-
+     return !(*this == rhs);
 }
 
 std::ostream& operator<<(std::ostream& os, const Matrix& matrix) {
-    
+    return os << matrix;
 }
 
 Matrix Matrix::operator+(const Matrix& rhs) const {
-  
+   Matrix matrix_sum(rhs.matrix_rows, rhs.matrix_cols);
+   return matrix_sum;
 }
 
 Matrix Matrix::operator-(const Matrix& rhs) const {
-   
+    Matrix matrix_sum(rhs.matrix_rows, rhs.matrix_cols);
+   return matrix_sum;
 }
 
 Matrix Matrix::operator*(const Matrix& rhs) const {
-  
+   Matrix matrix_sum(rhs.matrix_rows, rhs.matrix_cols);
+   return matrix_sum;
 }
 
 Matrix Matrix::transp() const {
- 
+    Matrix matrix_transp(this->matrix_cols, this->matrix_rows);
+    return matrix_transp;
 }
 
 Matrix Matrix::operator*(double val) const {
-  
+  Matrix matrix_transp(this->matrix_cols, this->matrix_rows);
+return matrix_transp * val;
 }
 
 Matrix operator*(double val, const Matrix& matrix) {
-   
+   return matrix * val;
 }
 
 double Matrix::det() const {
-
+    throw DimensionMismatch(*this);
 }
 
 Matrix Matrix::adj() const {
-   
+    throw DimensionMismatch(*this);
 }
 
 Matrix Matrix::inv() const {
-   
+    throw DimensionMismatch(*this);
 }
 
 }  // namespace prep
