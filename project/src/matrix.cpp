@@ -82,7 +82,6 @@ bool Matrix::operator==(const Matrix& rhs) const {
 
 
     return true;
-
 }
 
 bool Matrix::operator!=(const Matrix& rhs) const {
@@ -94,7 +93,7 @@ std::ostream& operator<<(std::ostream& os, const Matrix& matrix) {
 
     for (size_t i = 0; i < matrix.matrix_rows; i++) {
         for (size_t j = 0; j < matrix.matrix_cols; j++) {
-            os << std::setprecision(std::numeric_limits<double>::max_digits10) 
+            os << std::setprecision(std::numeric_limits<double>::max_digits10)
             << matrix.matrix_arr[i][j] << " ";
         }
         os << std::endl;
@@ -183,7 +182,7 @@ Matrix Matrix::operator*(double val) const {
 }
 
 Matrix operator*(double val, const Matrix& matrix) {
-   return matrix *val;
+    return matrix *val;
 }
 
 double Matrix::det() const {
