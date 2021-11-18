@@ -9,8 +9,7 @@ namespace prep {
 Matrix::Matrix(size_t rows, size_t cols)
     :matrix_rows(rows),
     matrix_cols(cols),
-    matrix_arr(rows, std::vector<double> (cols)) {
-}
+    matrix_arr(rows, std::vector<double> (cols)) {}
 
 Matrix::Matrix(std::istream& is) {
     if (!is) {
@@ -26,19 +25,17 @@ Matrix::Matrix(std::istream& is) {
 
     matrix_arr.resize(matrix_rows);
 
-    for (int i = 0; i < matrix_arr.size(); i++) {
-      
+        for (auto& rows : matrix_arr) {
+            rows.resize(matrix_cols);
 
-        for (int j = 0; j < i; j++) {
-            is >> matrix_arr[i][j];
+            for (auto& target : rows) {
+                is >> target;
 
-            if (!is) {
-                throw InvalidMatrixStream();
+                if (!is) {
+                    throw InvalidMatrixStream();
+                }
             }
         }
-    }
-
-
 }
 
 size_t Matrix::getRows() const {
