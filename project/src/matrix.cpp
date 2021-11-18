@@ -131,8 +131,26 @@ Matrix Matrix::operator-(const Matrix& rhs) const {
 }
 
 Matrix Matrix::operator*(const Matrix& rhs) const {
-   Matrix matrix_sum(rhs.matrix_rows, rhs.matrix_cols);
-   return matrix_sum;
+if (!this->matrix_rows || !this->matrix_cols ||
+        !rhs.matrix_rows || !rhs.matrix_cols) {
+        throw DimensionMismatch(rhs);
+    }
+
+    if (this->matrix_cols != rhs.matrix_rows) {
+        throw DimensionMismatch(rhs);
+    }
+    Matrix matrix_sub(this->matrix_rows, rhs.matrix_cols);
+
+    for (size_t i = 0; i < matrix_sub.matrix_rows; i++) {
+        for (size_t j = 0; j < rhs.matrix_cols; j++) {
+            for (size_t k = 0; k < this->matrix_cols; k++) {
+                matrix_sub.matrix_arr[i][j] +=
+                this->matrix_arr[i][k] * rhs.matrix_arr[k][j];
+            }
+        }
+    }
+
+    return matrix_sub;
 }
 
 Matrix Matrix::transp() const {
