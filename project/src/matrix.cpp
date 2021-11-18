@@ -155,6 +155,13 @@ if (!this->matrix_rows || !this->matrix_cols ||
 
 Matrix Matrix::transp() const {
     Matrix matrix_transp(this->matrix_cols, this->matrix_rows);
+
+    for (size_t i = 0; i < matrix_transp.matrix_rows; i++) {
+        for (size_t j = 0; j < matrix_transp.matrix_cols; j++) {
+            matrix_transp.matrix_arr[i][j] = this->matrix_arr[j][i];
+        }
+    }
+
     return matrix_transp;
 }
 
