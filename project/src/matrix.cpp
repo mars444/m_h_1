@@ -178,7 +178,7 @@ Matrix Matrix::operator*(double val) const {
         }
     }
 
-    return matrix_sub_right;
+    return matrix_sub_right;  //  123
 }
 
 Matrix operator*(double val, const Matrix& matrix) {
