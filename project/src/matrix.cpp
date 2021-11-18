@@ -42,19 +42,19 @@ Matrix::Matrix(std::istream& is) {
 }
 
 size_t Matrix::getRows() const {
-
+    return matrix_rows;
 }
 
 size_t Matrix::getCols() const {
-
+    return matrix_cols;
 }
 
 double Matrix::operator()(size_t i, size_t j) const {
- 
+    return matrix_arr[i][j];
 }
 
 double& Matrix::operator()(size_t i, size_t j) {
-
+    return matrix_arr[i][j];
 }
 
 
