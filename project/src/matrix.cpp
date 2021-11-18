@@ -6,12 +6,38 @@
 
 namespace prep {
 
-Matrix::Matrix(size_t rows, size_t cols)
-    : matrix_rows(rows), matrix_cols(cols),
-      matrix_arr(rows, std::vector<double> (cols)) {
+Matrix::Matrix(size_t rows, size_t cols):
+    matrix_rows(rows),
+    matrix_cols(cols),
+    matrix_arr(rows, std::vector<double> (cols)) {
 }
 
 Matrix::Matrix(std::istream& is) {
+    if (!is) {
+        throw InvalidMatrixStream();
+    }
+
+    is >> matrix_rows;
+    is >> matrix_cols;
+
+    if (matrix_rows < 1 || matrix_cols < 1 ) {
+        throw InvalidMatrixStream();
+    }
+
+    matrix_arr.resize(matrix_rows);
+
+    for (int i = 0; i < matrix_arr.size(); i++) {
+      
+
+        for (int j = 0; j < i; j++) {
+            is >> matrix_arr[i][j];
+
+            if (!is) {
+                throw InvalidMatrixStream();
+            }
+        }
+    }
+
 
 }
 
