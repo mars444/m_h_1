@@ -1,0 +1,36 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../project/include/exceptions.h
+exception
+-
+string
+-
+matrix.h
+../project/include/matrix.h
+
+../project/include/matrix.h
+vector
+-
+istream
+-
+
+/home/mars444/TP/mail-homework/project/src/matrix.cpp
+iostream
+-
+limits
+-
+cmath
+-
+iomanip
+-
+exceptions.h
+/home/mars444/TP/mail-homework/project/src/exceptions.h
+matrix.h
+/home/mars444/TP/mail-homework/project/src/matrix.h
+

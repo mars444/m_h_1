@@ -18,7 +18,7 @@ SRCS = \
 		project/src/matrix_sub.c \
 	  	project/src/matrix_transp.c \
 	   	project/src/mul_scalar.c \
-		project/src/matrix_sum.c
+		project/src/matrix_sum.c \
 	   
 
 # Test
@@ -37,7 +37,9 @@ TST_SRCS = \
 	   		project/src/matrix_sub.c \
 	  		project/src/matrix_transp.c \
 	   		project/src/mul_scalar.c \
-			project/src/matrix_sum.c
+			project/src/matrix_sum.c \
+			project/src/matrix_minor.c \
+			project/src/matrix_det.c
 
 .PHONY: all check build test memtest testextra memtestextra rebuild clean
 
