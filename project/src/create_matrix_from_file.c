@@ -8,7 +8,6 @@ Matrix *create_matrix_from_file(const char *path_file) {
         return NULL;
     }
 
-    size_t i, j;
     FILE *Ptr;
     Matrix *matrix;
 
@@ -36,14 +35,14 @@ Matrix *create_matrix_from_file(const char *path_file) {
         return NULL;
     }
 
-    for (i = 0; i < matrix->rows; i++) {
+    for (size_t i = 0; i < matrix->rows; i++) {
         matrix->arr[i] = (double *)malloc(matrix->cols * sizeof(double));
         if (!matrix->arr[i]) {
             fclose(Ptr);
             free(matrix);
             return NULL;
         }
-        for (j = 0; j < matrix->cols; j++) {
+        for (size_t j = 0; j < matrix->cols; j++) {
             fscanf(Ptr, "%lf", &matrix->arr[i][j]);
         }
     }

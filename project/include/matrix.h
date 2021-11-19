@@ -3,7 +3,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-
 typedef struct Matrix {
     double** arr;
     size_t rows;

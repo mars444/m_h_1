@@ -10,7 +10,6 @@ Matrix *sum(const Matrix *l, const Matrix *r) {
         return NULL;
     }
 
-    size_t i, j;
     Matrix *matrix_sum;
 
     matrix_sum = (Matrix *)malloc(sizeof(Matrix));
@@ -30,7 +29,7 @@ Matrix *sum(const Matrix *l, const Matrix *r) {
         return NULL;
     }
 
-    for (i = 0; i < l->rows; i++) {
+    for (size_t i = 0; i < l->rows; i++) {
         matrix_sum->arr[i] = (double *)malloc(l->cols * sizeof(double));
 
         if (!matrix_sum->arr[i]) {
@@ -38,7 +37,7 @@ Matrix *sum(const Matrix *l, const Matrix *r) {
             return NULL;
         }
 
-        for (j = 0; j < l->cols; j++) {
+        for (size_t j = 0; j < l->cols; j++) {
             matrix_sum->arr[i][j] = l->arr[i][j] + r->arr[i][j];
         }
     }

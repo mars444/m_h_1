@@ -5,7 +5,7 @@ Matrix *transp(const Matrix *matrix) {   //  транспонирование м
         return NULL;
     }
 
-    size_t i, j, rows = matrix->rows, cols = matrix->cols;
+    size_t rows = matrix->rows, cols = matrix->cols;
     Matrix *matrix_t;
 
     matrix_t = (Matrix *)malloc(sizeof(Matrix));
@@ -25,7 +25,7 @@ Matrix *transp(const Matrix *matrix) {   //  транспонирование м
         return NULL;
     }
 
-    for (i = 0; i < cols; i++) {
+    for (size_t i = 0; i < cols; i++) {
         matrix_t->arr[i] = (double *)malloc(rows * sizeof(double));
 
         if (!matrix_t->arr[i]) {
@@ -33,7 +33,7 @@ Matrix *transp(const Matrix *matrix) {   //  транспонирование м
             return NULL;
         }
 
-        for (j = 0; j < rows; j++) {
+        for (size_t j = 0; j < rows; j++) {
             matrix_t->arr[i][j] = matrix->arr[j][i];
         }
     }

@@ -9,16 +9,19 @@ HDRS = \
 
 SRCS = \
 	    project/src/main.c \
-	    project/src/matrix.c \
 	    project/src/create_matrix_from_file.c \
-	    project/src/create_matrix.c \
+	   	project/src/create_matrix.c \
 	   	project/src/free_matrix.c \
 	   	project/src/matrix_get_set.c \
 	   	project/src/matrix_mul.c \
-		project/src/matrix_sub.c \
+	   	project/src/matrix_sub.c \
 	  	project/src/matrix_transp.c \
 	   	project/src/mul_scalar.c \
 		project/src/matrix_sum.c \
+		project/src/matrix_minor.c \
+		project/src/matrix_det.c \
+		project/src/matrix_adj.c \
+		project/src/matrix_inv.c
 	   
 
 # Test
@@ -27,7 +30,6 @@ TST_HDRS = \
 		   project/tests/include
 
 TST_SRCS = \
-            project/src/matrix.c \
 		    project/tests/src/*.c \
 		    project/src/create_matrix_from_file.c \
 	   		project/src/create_matrix.c \
@@ -39,7 +41,9 @@ TST_SRCS = \
 	   		project/src/mul_scalar.c \
 			project/src/matrix_sum.c \
 			project/src/matrix_minor.c \
-			project/src/matrix_det.c
+			project/src/matrix_det.c \
+			project/src/matrix_adj.c \
+			project/src/matrix_inv.c
 
 .PHONY: all check build test memtest testextra memtestextra rebuild clean
 

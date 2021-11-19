@@ -5,7 +5,7 @@ Matrix *mul_scalar(const Matrix *matrix, double val) {   //  умножение 
         return NULL;
     }
 
-    size_t i, j, rows = matrix->rows, cols = matrix->cols;
+    size_t rows = matrix->rows, cols = matrix->cols;
     Matrix *matrix_num;
 
     matrix_num = (Matrix *)malloc(sizeof(Matrix));
@@ -22,7 +22,7 @@ Matrix *mul_scalar(const Matrix *matrix, double val) {   //  умножение 
         free(matrix_num);
         return NULL;
     }
-    for (i = 0; i < rows; i++) {
+    for (size_t i = 0; i < rows; i++) {
         matrix_num->arr[i] = (double *)malloc(cols * sizeof(double));
 
         if (!matrix_num->arr[i]) {
@@ -30,7 +30,7 @@ Matrix *mul_scalar(const Matrix *matrix, double val) {   //  умножение 
             return NULL;
         }
 
-        for (j = 0; j < cols; j++) {
+        for (size_t j = 0; j < cols; j++) {
             matrix_num->arr[i][j] = matrix->arr[i][j] * val;
         }
     }

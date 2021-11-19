@@ -9,7 +9,6 @@ Matrix *mul(const Matrix *l, const Matrix *r) {
         return NULL;
     }
 
-    size_t i, j, k;
     Matrix *matrix_mul;
 
     matrix_mul = (Matrix *)malloc(sizeof(Matrix));
@@ -28,7 +27,7 @@ Matrix *mul(const Matrix *l, const Matrix *r) {
         return NULL;
     }
 
-    for (i = 0; i < matrix_mul->rows; i++) {
+    for (size_t i = 0; i < matrix_mul->rows; i++) {
         matrix_mul->arr[i] = (double *)malloc(matrix_mul->cols * sizeof(double));
 
         if (!matrix_mul->arr[i]) {
@@ -36,9 +35,10 @@ Matrix *mul(const Matrix *l, const Matrix *r) {
             return NULL;
         }
 
-        for (j = 0; j < matrix_mul->cols; j++) {
+        for (size_t j = 0; j < matrix_mul->cols; j++) {
             matrix_mul->arr[i][j] = 0;
-            for (k = 0; k < r->rows; k++) {
+
+            for (size_t k = 0; k < r->rows; k++) {
                 matrix_mul->arr[i][j] = matrix_mul->arr[i][j] + (r->arr[k][j] * l->arr[i][k]);
             }
         }

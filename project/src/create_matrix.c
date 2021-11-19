@@ -8,7 +8,6 @@ Matrix *create_matrix(size_t rows, size_t cols) {
         return NULL;
     }
 
-    size_t i, j;
     Matrix *matrix;
 
     matrix = (Matrix *)malloc(sizeof(Matrix));
@@ -28,13 +27,13 @@ Matrix *create_matrix(size_t rows, size_t cols) {
         return NULL;
     }
 
-    for (i = 0; i < rows; i++) {
+    for (size_t i = 0; i < rows; i++) {
         matrix->arr[i] = (double *)malloc(cols * sizeof(double));
         if (matrix->arr[i] == NULL) {
             free(matrix);
             return NULL;
         }
-        for (j = 0; j < cols; j++) {
+        for (size_t j = 0; j < cols; j++) {
             matrix->arr[i][j] = 0;
         }
     }
