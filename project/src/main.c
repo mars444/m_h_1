@@ -21,5 +21,9 @@ int main(void) {
         free_matrix(left);
         free_matrix(right);
 
+    /* NOTE(stitaevskiy):
+     * You could check your implementation here.
+     */
+
   return 0;
 }
