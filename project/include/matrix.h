@@ -5,11 +5,10 @@
 
 namespace prep {
 class Matrix {
- public:
+public:
   size_t matrix_rows;
   size_t matrix_cols;
   std::vector<std::vector<double>> matrix_arr;
-
 
   explicit Matrix(size_t rows = 0, size_t cols = 0);
   explicit Matrix(std::istream& is);
