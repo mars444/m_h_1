@@ -73,7 +73,7 @@ bool Matrix::operator==(const Matrix& rhs) const {
 
     for (size_t i = 0; i < this->matrix_rows; i++) {
         for (size_t j = 0; j < this->matrix_cols; j++) {
-            if (std::fabs(rhs.matrix_arr[i][j] - (this->matrix_arr[i][j]) >
+            if (std::fabs(rhs.matrix_arr[i][j] - (this->matrix_arr[i][j]) >=
             std::numeric_limits<double>::epsilon() * 10e-07)) {
                 return false;
             }
