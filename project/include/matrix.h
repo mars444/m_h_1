@@ -5,7 +5,8 @@
 
 namespace prep {
 class Matrix {
-public:
+  public:
+
   size_t matrix_rows;
   size_t matrix_cols;
   std::vector<std::vector<double>> matrix_arr;
