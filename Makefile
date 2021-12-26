@@ -1,7 +1,16 @@
 TARGET = ./main.out
 HDRS_DIR = project/include
 
-SRCS = project/src/main.c
+SRCS = project/src/main.c \
+       project/src/client_write.c \
+	   project/src/write_client_to_file.c \
+	   project/src/transaction_write.c \
+	   project/src/black_record.c \
+	   project/src/read_from_file_test.c \
+	   project/src/function_cases.c \
+	   project/src/my_test.c \
+	   project/src/write_to_file_from_flow.c \
+	   project/src/print_client_fields.c
 
 .PHONY: all build rebuild check test memtest clean
 
