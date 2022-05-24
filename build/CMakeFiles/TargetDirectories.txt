@@ -1,0 +1,11 @@
+/home/mars444/TP/mail-homework/build/CMakeFiles/rebuild_cache.dir
+/home/mars444/TP/mail-homework/build/CMakeFiles/edit_cache.dir
+/home/mars444/TP/mail-homework/build/CMakeFiles/test.dir
+/home/mars444/TP/mail-homework/build/project/CMakeFiles/rebuild_cache.dir
+/home/mars444/TP/mail-homework/build/project/CMakeFiles/edit_cache.dir
+/home/mars444/TP/mail-homework/build/project/CMakeFiles/test.dir
+/home/mars444/TP/mail-homework/build/project/CMakeFiles/prepmatrix.dir
+/home/mars444/TP/mail-homework/build/project/tests/CMakeFiles/rebuild_cache.dir
+/home/mars444/TP/mail-homework/build/project/tests/CMakeFiles/edit_cache.dir
+/home/mars444/TP/mail-homework/build/project/tests/CMakeFiles/test.dir
+/home/mars444/TP/mail-homework/build/project/tests/CMakeFiles/tests.dir

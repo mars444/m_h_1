@@ -1,10 +1,12 @@
-#ifndef _MATRIX_H_
-#define _MATRIX_H_
-
+#pragma once
 #include <stddef.h>
-
+#include <stdio.h>
+#include <stdlib.h>
 
 typedef struct Matrix {
+    double** arr;
+    size_t rows;
+    size_t cols;
 } Matrix;
 
 // Init/release operations
@@ -18,7 +20,7 @@ int get_cols(const Matrix* matrix, size_t* cols);
 int get_elem(const Matrix* matrix, size_t row, size_t col, double* val);
 int set_elem(Matrix* matrix, size_t row, size_t col, double val);
 
-//Math operations
+//  Math operations
 Matrix* mul_scalar(const Matrix* matrix, double val);
 Matrix* transp(const Matrix* matrix);
 
@@ -31,5 +33,5 @@ int det(const Matrix* matrix, double* val);
 Matrix* adj(const Matrix* matrix);
 Matrix* inv(const Matrix* matrix);
 
-
-#endif //_MATRIX_H_
+// search minor
+void minor(const Matrix* l, const Matrix* r, size_t cols, size_t rows);
